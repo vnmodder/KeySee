@@ -288,7 +288,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import userApi from '../api/user-api';
-
 const items = ref([]);
 
 const fetchData = async () => {
@@ -302,6 +301,6 @@ const fetchData = async () => {
     alert(response.data.result.errorMessage)
   }
 };
-
+console.log(import.meta.env)
 fetchData();
 </script>
