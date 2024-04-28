@@ -53,6 +53,10 @@
 <script  setup lang="ts">
 import Cookies from 'js-cookie'
 import { userStore } from '../stores/auth';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
 
 const userSt = userStore();
 let user :any = userSt.checkLogin();
@@ -61,6 +65,7 @@ const logout = () => {
     userSt.removeUserStore();
     Cookies.remove('token')
     user = userSt.checkLogin();
+    router.push('/login')
 };
 
 </script>
