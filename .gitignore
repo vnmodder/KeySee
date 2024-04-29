@@ -1,1 +1,10 @@
 ﻿squirrel-fe/.vscode
+squirrel-be/.vs
+squirrel-be/Squirrel.Application/bin
+squirrel-be/Squirrel.Application/obj
+squirrel-be/Squirrel.Domain/bin
+squirrel-be/Squirrel.Infrastructure/bin
+squirrel-be/Squirrel.Presentation/bin
+squirrel-be/Squirrel.Presentation/obj
+squirrel-be/Squirrel.Infrastructure/obj
+squirrel-be/Squirrel.Domain/obj
