@@ -50,7 +50,7 @@ const handleLogin = async () => {
         const response = await authApi.login(loginId.value, password.value);
         console.log(response)
         if (response.status === 200) {
-            user.setUserStore(response.data.result)
+            user.login(response.data.result)
             Cookies.set("token", response.data.result.token)
             router.push('/');
         }

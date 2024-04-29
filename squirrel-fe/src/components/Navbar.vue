@@ -13,22 +13,15 @@
                 <div class="navbar-nav ms-auto py-0">
                     <RouterLink class="nav-item nav-link active" to="/" >Trang chủ</RouterLink>
                     <RouterLink class="nav-item nav-link " to="/about" >Giới thiệu</RouterLink>
-
-
-                    <!-- <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div v-if="user" class="nav-item dropdown">
+                        <div href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Chào: {{ user.userName }}</div>
                         <div class="dropdown-menu m-0">
-                            <a href="destination.html" class="dropdown-item">Destination</a>
-                            <a href="booking.html" class="dropdown-item">Booking</a>
-                            <a href="team.html" class="dropdown-item">Travel Guides</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="404.html" class="dropdown-item">404 Page</a>
+                            <a href="#" class="dropdown-item">Thông tin</a>
+                            <a @click="logout" class="dropdown-item">Đăng xuất</a>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
-                <div v-if="user" class="nav-item nav-link" >{{ user.userName }}</div>
-                <div v-if="user" @click="logout" class="btn btn-primary rounded-pill py-2 px-4" >Đăng xuất</div>
-                <RouterLink  v-else  class="btn btn-primary rounded-pill py-2 px-4" to="/login">Đăng nhập</RouterLink>
+                <RouterLink  v-if="!user"  class="btn btn-primary rounded-pill py-2 px-4" to="/login">Đăng nhập</RouterLink>
             </div>
         </nav>
 
@@ -54,18 +47,18 @@
 import Cookies from 'js-cookie'
 import { userStore } from '../stores/auth';
 import { useRouter } from 'vue-router';
+import { storeToRefs } from 'pinia';
 
 const router = useRouter();
 
 
 const userSt = userStore();
-let user :any = userSt.checkLogin();
+const { user } = storeToRefs(userSt);
 
 const logout = () => {
-    userSt.removeUserStore();
+    userSt.logout();
     Cookies.remove('token')
-    user = userSt.checkLogin();
-    router.push('/login')
+    //router.push('/login')
 };
 
 </script>

@@ -1,23 +1,24 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue'
 
-export const userStore = defineStore('user-store', () => {
-    const user = ref(localStorage.getItem('user'));
-
-    const setUserStore = (user: any) => {
-        user.value = user;
-        localStorage.setItem('user', user);
+export const userStore =  defineStore({
+    id: 'auth',
+    state: () => ({
+        // initialize state from local storage to enable user to stay logged in
+        user: JSON.parse(localStorage.getItem('user')?.toString()??"null"),
+    }),
+    actions: {
+        async login(user:any) {
+            try {
+                this.user = user;
+                localStorage.setItem('user', JSON.stringify(user));
+            } catch (error) {
+                alert(error);                
+            }
+        },
+        logout() {
+            this.user = null;
+            localStorage.removeItem('user');
+        }
     }
-
-    const removeUserStore = () => {
-        user.value = null;
-        localStorage.removeItem('user');
-    }
-
-    const checkLogin = ()=>{
-        user.value = localStorage.getItem('user')
-        return user.value
-    }
-
-    return { user, setUserStore, removeUserStore, checkLogin }
 });
