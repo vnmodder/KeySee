@@ -1,0 +1,5 @@
+export {default as HomeView} from '../views/HomeView.vue'
+export {default as NotFound} from '../views/NotFoundView.vue'
+export {default as About} from '../views/AboutView.vue'
+export {default as Login} from '../views/LoginView.vue'
+export {default as RegisterView} from '../views/RegisterView.vue'

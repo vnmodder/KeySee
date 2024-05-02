@@ -40,7 +40,7 @@
 
 /*** Button ***/
 .btn {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     font-weight: 600;
     transition: .5s;
 }
@@ -79,7 +79,7 @@
 
 /*** Navbar ***/
 .navbar-light .navbar-nav .nav-link {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     position: relative;
     margin-right: 25px;
     padding: 35px 0;
@@ -410,7 +410,7 @@
 .footer .btn.btn-link::before {
     position: relative;
     content: "\f105";
-    font-family: "Font Awesome 5 Free";
+    font-family: "Segoe UI";
     font-weight: 900;
     margin-right: 10px;
 }

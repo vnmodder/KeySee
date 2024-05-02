@@ -19,6 +19,14 @@ export default {
 
     logout:()=>{
         baseApi.postAuthenticate("Authenticate/Logout",null);
+    },
+    register: async(userName: string, password: string, name: string, email: string)=>{
+      return await baseApi.postAuthenticate('Authenticate/Signup', {
+        userName,
+        password,
+        name,
+        email,
+      });
     }
 };
 

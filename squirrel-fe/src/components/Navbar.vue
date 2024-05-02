@@ -4,7 +4,7 @@
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0 primary">
             <a href="" class="navbar-brand p-0">
                 <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i>Squirrel</h1>
-                <!-- <img src="https://keysee.click/img/logo.png" alt="Logo"> -->
+                <!-- <img src="@/assets/img/logo.png" alt="Logo"> -->
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
@@ -55,8 +55,8 @@ const router = useRouter();
 const userSt = userStore();
 const { user } = storeToRefs(userSt);
 
-const logout = () => {
-    userSt.logout();
+const logout = async () => {
+    await userSt.logout();
     Cookies.remove('token')
     //router.push('/login')
 };
