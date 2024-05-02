@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
+using Squirrel.Application.Authenticate.Login.Model;
+using Squirrel.Infrastructure.Databases.SquirrelDB.Entities;
 
 namespace Squirrel.Application.Authenticate.Login
 {
     public class LoginResponse
     {
-        //public Guid? Id { get; set; }
-        public string UserName { get; set; }
-        public string Name { get; set; } = string.Empty;
+        public UserInfoModel? UserInfo { get; set; }
         public string? Email { get; set; } = string.Empty;
         public string Token { get; set; } = string.Empty;
         public DateTime Expiration { get; set; }

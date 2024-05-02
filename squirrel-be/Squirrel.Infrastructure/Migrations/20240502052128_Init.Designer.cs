@@ -2,9 +2,9 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Squirrel.Infrastructure.Databases.SquirrelDB;
 
 #nullable disable
@@ -12,7 +12,7 @@ using Squirrel.Infrastructure.Databases.SquirrelDB;
 namespace Squirrel.Infrastructure.Migrations
 {
     [DbContext(typeof(SquirrelDbContext))]
-    [Migration("20240429040730_Init")]
+    [Migration("20240502052128_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -21,36 +21,35 @@ namespace Squirrel.Infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.13")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("character varying(256)");
 
                     b.Property<string>("NormalizedName")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("character varying(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasDatabaseName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
+                        .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
 
@@ -82,18 +81,18 @@ namespace Squirrel.Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int>("RoleId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -106,18 +105,18 @@ namespace Squirrel.Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -129,16 +128,16 @@ namespace Squirrel.Infrastructure.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("text");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("text");
 
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -150,10 +149,10 @@ namespace Squirrel.Infrastructure.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
                     b.Property<int>("UserId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("RoleId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -165,16 +164,16 @@ namespace Squirrel.Infrastructure.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
                     b.Property<int>("UserId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
@@ -189,13 +188,13 @@ namespace Squirrel.Infrastructure.Migrations
                         .HasColumnName("Id")
                         .HasComment("Khóa chính");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("Id"));
 
                     b.Property<DateTime?>("DeleteDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("DeleteDate")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int?>("DeleteUserId")
                         .HasColumnType("INT")
@@ -203,19 +202,19 @@ namespace Squirrel.Infrastructure.Migrations
 
                     b.Property<string>("Description")
                         .IsUnicode(true)
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("Description");
 
                     b.Property<string>("ImgUrl")
                         .IsUnicode(true)
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("ImgUrl");
 
                     b.Property<DateTime?>("InsertDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("InsertDate")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int?>("InsertUserId")
                         .HasColumnType("INT")
@@ -223,20 +222,20 @@ namespace Squirrel.Infrastructure.Migrations
 
                     b.Property<bool?>("IsDeleted")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("BIT")
+                        .HasColumnType("BOOL")
                         .HasColumnName("IsDeleted")
-                        .HasDefaultValueSql("0");
+                        .HasDefaultValueSql("false");
 
                     b.Property<string>("Name")
                         .IsUnicode(true)
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("Name");
 
                     b.Property<DateTime?>("UpdateDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("UpdateDate")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int?>("UpdateUserId")
                         .HasColumnType("INT")
@@ -255,7 +254,7 @@ namespace Squirrel.Infrastructure.Migrations
                         .HasColumnName("Id")
                         .HasComment("Khóa chính");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("Id"));
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("INT")
@@ -267,9 +266,9 @@ namespace Squirrel.Infrastructure.Migrations
 
                     b.Property<DateTime?>("DeleteDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("DeleteDate")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int?>("DeleteUserId")
                         .HasColumnType("INT")
@@ -277,19 +276,19 @@ namespace Squirrel.Infrastructure.Migrations
 
                     b.Property<string>("Description")
                         .IsUnicode(true)
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("Description");
 
                     b.Property<string>("ImgUrl")
                         .IsUnicode(true)
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("ImgUrl");
 
                     b.Property<DateTime?>("InsertDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("InsertDate")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int?>("InsertUserId")
                         .HasColumnType("INT")
@@ -297,17 +296,17 @@ namespace Squirrel.Infrastructure.Migrations
 
                     b.Property<bool?>("IsDeleted")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("BIT")
+                        .HasColumnType("BOOL")
                         .HasColumnName("IsDeleted")
-                        .HasDefaultValueSql("0");
+                        .HasDefaultValueSql("false");
 
-                    b.Property<decimal>("Price")
+                    b.Property<double>("Price")
                         .HasColumnType("DECIMAL")
                         .HasColumnName("Price");
 
                     b.Property<string>("Title")
                         .IsUnicode(true)
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("Title");
 
                     b.Property<int>("TotalLessons")
@@ -316,9 +315,9 @@ namespace Squirrel.Infrastructure.Migrations
 
                     b.Property<DateTime?>("UpdateDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("UpdateDate")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int?>("UpdateUserId")
                         .HasColumnType("INT")
@@ -337,18 +336,18 @@ namespace Squirrel.Infrastructure.Migrations
                         .HasColumnName("Id")
                         .HasComment("Khóa chính");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("Id"));
 
                     b.Property<string>("Content")
                         .IsUnicode(true)
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("Content");
 
                     b.Property<DateTime?>("DeleteDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("DeleteDate")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int?>("DeleteUserId")
                         .HasColumnType("INT")
@@ -356,39 +355,39 @@ namespace Squirrel.Infrastructure.Migrations
 
                     b.Property<string>("ImgUrl")
                         .IsUnicode(true)
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("ImgUrl");
 
                     b.Property<DateTime?>("InsertDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("InsertDate")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int?>("InsertUserId")
                         .HasColumnType("INT")
                         .HasColumnName("InsertUserId");
 
                     b.Property<bool>("IsCompleted")
-                        .HasColumnType("BIT")
+                        .HasColumnType("BOOL")
                         .HasColumnName("IsCompleted");
 
                     b.Property<bool?>("IsDeleted")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("BIT")
+                        .HasColumnType("BOOL")
                         .HasColumnName("IsDeleted")
-                        .HasDefaultValueSql("0");
+                        .HasDefaultValueSql("false");
 
                     b.Property<string>("Title")
                         .IsUnicode(true)
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("Title");
 
                     b.Property<DateTime?>("UpdateDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("UpdateDate")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int?>("UpdateUserId")
                         .HasColumnType("INT")
@@ -396,7 +395,7 @@ namespace Squirrel.Infrastructure.Migrations
 
                     b.Property<string>("VideoUrl")
                         .IsUnicode(true)
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("VideoUrl");
 
                     b.HasKey("Id");
@@ -412,21 +411,21 @@ namespace Squirrel.Infrastructure.Migrations
                         .HasColumnName("Id")
                         .HasComment("Khóa chính");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("Id"));
 
-                    b.Property<decimal>("Amount")
+                    b.Property<double>("Amount")
                         .HasColumnType("DECIMAL")
                         .HasColumnName("Amount");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("Date");
 
                     b.Property<DateTime?>("DeleteDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("DeleteDate")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int?>("DeleteUserId")
                         .HasColumnType("INT")
@@ -434,14 +433,14 @@ namespace Squirrel.Infrastructure.Migrations
 
                     b.Property<string>("Description")
                         .IsUnicode(true)
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("Description");
 
                     b.Property<DateTime?>("InsertDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("InsertDate")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int?>("InsertUserId")
                         .HasColumnType("INT")
@@ -449,9 +448,9 @@ namespace Squirrel.Infrastructure.Migrations
 
                     b.Property<bool?>("IsDeleted")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("BIT")
+                        .HasColumnType("BOOL")
                         .HasColumnName("IsDeleted")
-                        .HasDefaultValueSql("0");
+                        .HasDefaultValueSql("false");
 
                     b.Property<int>("Type")
                         .HasColumnType("INT")
@@ -459,9 +458,9 @@ namespace Squirrel.Infrastructure.Migrations
 
                     b.Property<DateTime?>("UpdateDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("UpdateDate")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int?>("UpdateUserId")
                         .HasColumnType("INT")
@@ -484,22 +483,22 @@ namespace Squirrel.Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<DateTime?>("DeleteDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("DeleteDate")
-                        .HasDefaultValueSql("GETUTCDATE()")
+                        .HasDefaultValueSql("NOW()")
                         .HasComment("DeleteDate");
 
                     b.Property<int?>("DeleteUserId")
@@ -509,16 +508,16 @@ namespace Squirrel.Infrastructure.Migrations
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("character varying(256)");
 
                     b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<DateTime?>("InsertDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("InsertDate")
-                        .HasDefaultValueSql("GETUTCDATE()")
+                        .HasDefaultValueSql("NOW()")
                         .HasComment("InsertDate");
 
                     b.Property<int?>("InsertUserId")
@@ -527,30 +526,30 @@ namespace Squirrel.Infrastructure.Migrations
                         .HasComment("InsertUserId");
 
                     b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("character varying(256)");
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("character varying(256)");
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int>("Status")
                         .HasColumnType("INT")
@@ -558,13 +557,13 @@ namespace Squirrel.Infrastructure.Migrations
                         .HasComment("Status");
 
                     b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<DateTime?>("UpdateDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("UpdateDate")
-                        .HasDefaultValueSql("GETUTCDATE()")
+                        .HasDefaultValueSql("NOW()")
                         .HasComment("UpdateDate");
 
                     b.Property<int?>("UpdateUserId")
@@ -574,7 +573,7 @@ namespace Squirrel.Infrastructure.Migrations
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("character varying(256)");
 
                     b.HasKey("Id");
 
@@ -583,8 +582,7 @@ namespace Squirrel.Infrastructure.Migrations
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+                        .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -597,21 +595,21 @@ namespace Squirrel.Infrastructure.Migrations
                         .HasColumnName("Id")
                         .HasComment("Khóa chính");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("Id"));
 
                     b.Property<int>("CourseId")
                         .HasColumnType("INT")
                         .HasColumnName("CourseId");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("Date");
 
                     b.Property<DateTime?>("DeleteDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("DeleteDate")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int?>("DeleteUserId")
                         .HasColumnType("INT")
@@ -619,9 +617,9 @@ namespace Squirrel.Infrastructure.Migrations
 
                     b.Property<DateTime?>("InsertDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("InsertDate")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int?>("InsertUserId")
                         .HasColumnType("INT")
@@ -629,15 +627,15 @@ namespace Squirrel.Infrastructure.Migrations
 
                     b.Property<bool?>("IsDeleted")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("BIT")
+                        .HasColumnType("BOOL")
                         .HasColumnName("IsDeleted")
-                        .HasDefaultValueSql("0");
+                        .HasDefaultValueSql("false");
 
                     b.Property<DateTime?>("UpdateDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("DATETIME")
+                        .HasColumnType("TIMESTAMP")
                         .HasColumnName("UpdateDate")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int?>("UpdateUserId")
                         .HasColumnType("INT")
@@ -656,9 +654,9 @@ namespace Squirrel.Infrastructure.Migrations
                 {
                     b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("Id"));
 
                     b.Property<int>("Balance")
                         .HasColumnType("INT")
@@ -666,30 +664,30 @@ namespace Squirrel.Infrastructure.Migrations
                         .HasComment("Balance");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int?>("DeleteUserId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int?>("InsertUserId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("Name");
 
                     b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int?>("UpdateUserId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("UserId")
                         .HasColumnType("INT")

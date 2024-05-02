@@ -12,7 +12,7 @@ namespace Squirrel.Infrastructure.Databases.SquirrelDB.EntityConfigurations
             base.Configure(builder);
 
             builder.Property(e => e.Date)
-              .HasColumnType("DATETIME")
+              .HasColumnType("TIMESTAMP")
               .HasColumnName("Date");
             builder.Property(e => e.Amount)
              .HasColumnType("DECIMAL")

@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Squirrel.Application.Authenticate.Login.Model;
+using Squirrel.Infrastructure.Databases.SquirrelDB.Entities;
 
 namespace Application.Common.MappingProfiles
 {
@@ -6,8 +8,7 @@ namespace Application.Common.MappingProfiles
     {
         public ApproveDataProfile()
         {
-            //CreateMap<ShoninDataTable, ShoninDataTable>();
-            //CreateMap<ShoninDataTable, ShoninDataHistoryTable>();
+            CreateMap<UserInformation, UserInfoModel>();
         }
     }
 }

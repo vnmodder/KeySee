@@ -17,9 +17,9 @@ namespace Squirrel.Infrastructure.Databases.SquirrelDB.Extensions
             //add default for Role
             var roles = new List<IdentityRole<int>>()
             {
-                new IdentityRole<int>() { Id = 1, Name = RoleConstants.ZERO, ConcurrencyStamp = "1", NormalizedName = RoleConstants.ZERO},
-                new IdentityRole<int>() { Id = 2, Name = RoleConstants.ADMIN, ConcurrencyStamp = "2", NormalizedName = RoleConstants.ADMIN },
-                new IdentityRole<int>() { Id = 3, Name = RoleConstants.USER, ConcurrencyStamp = "3", NormalizedName = RoleConstants.USER }
+                new IdentityRole<int>() { Id = 1, Name = RoleConstants.ZERO, ConcurrencyStamp = "1", NormalizedName = RoleConstants.ZERO.ToUpper()},
+                new IdentityRole<int>() { Id = 2, Name = RoleConstants.ADMIN, ConcurrencyStamp = "2", NormalizedName = RoleConstants.ADMIN.ToUpper() },
+                new IdentityRole<int>() { Id = 3, Name = RoleConstants.USER, ConcurrencyStamp = "3", NormalizedName = RoleConstants.USER.ToUpper() }
             };
 
             modelBuilder.Entity<IdentityRole<int>>()

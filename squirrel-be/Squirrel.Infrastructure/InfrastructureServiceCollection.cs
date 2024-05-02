@@ -24,6 +24,8 @@ namespace Squirrel.Infrastructure
 
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
             // Add Application Database context
             services.AddSingleton<IDbContextFactory, DbContextFactory>();
             // PORE
@@ -64,13 +66,7 @@ namespace Squirrel.Infrastructure
             services.AddDbContext<SquirrelDbContext>(options =>
             {
                 options.AddInterceptors(new SquirrelDbContextCommandInterceptor($"{configuration["FtpServer:Directory"]}Logs/SquirrelDbContextSqlCommandLog.txt"));
-                options.UseSqlServer(
-                    connectionString: configuration.GetConnectionString("SquirrelDB"),
-                    sqlServerOptionsAction: sqlOptions =>
-                    {
-                        sqlOptions.CommandTimeout((int)TimeSpan.FromSeconds(SettingConstants.DatabaseSettings.TIMEOUT_FROM_SECONDS).TotalSeconds);
-                        //sqlOptions.EnableRetryOnFailure();
-                    });
+                options.UseNpgsql(configuration.GetConnectionString("SquirrelDB"));
                 options.EnableDetailedErrors();
             });
 

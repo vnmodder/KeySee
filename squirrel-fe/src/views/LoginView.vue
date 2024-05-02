@@ -47,11 +47,16 @@ const password = ref('');
 
 const handleLogin = async () => {
     if (loginId.value && password.value) {
-        const response = await authApi.login(loginId.value, password.value);
-        console.log(response)
-        if (response.status === 200) {
-            user.login(response.data.result)
-            Cookies.set("token", response.data.result.token)
+        const loginModel = {
+            loginId: loginId.value,
+            password: password.value,
+            rememberMe:false,
+        }
+        const response = await authApi.login(loginModel);
+        if (response) {
+            console.log(response)
+            user.login(response.userInfo)
+            Cookies.set("token", response.token)
             router.push('/');
         }
     } else {

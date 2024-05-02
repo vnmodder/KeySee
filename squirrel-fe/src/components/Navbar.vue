@@ -14,7 +14,7 @@
                     <RouterLink class="nav-item nav-link active" to="/" >Trang chủ</RouterLink>
                     <RouterLink class="nav-item nav-link " to="/about" >Giới thiệu</RouterLink>
                     <div v-if="user" class="nav-item dropdown">
-                        <div href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Chào: {{ user.userName }}</div>
+                        <div href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Chào: {{ user.name }}</div>
                         <div class="dropdown-menu m-0">
                             <a href="#" class="dropdown-item">Thông tin</a>
                             <a @click="logout" class="dropdown-item">Đăng xuất</a>

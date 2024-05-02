@@ -2,11 +2,6 @@
 using Squirrel.Infrastructure.Databases.SquirrelDB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Squirrel.Infrastructure.Databases
 {
@@ -29,13 +24,7 @@ namespace Squirrel.Infrastructure.Databases
             }
             _squirrelDbContextOptions = new DbContextOptionsBuilder<SquirrelDbContext>()
                 .AddInterceptors(new SquirrelDbContextCommandInterceptor($"{configuration["FtpServer:Directory"]}Logs/SquirrelDbContextSqlCommandLog.txt"))
-                .UseSqlServer(
-                    connectionString: configuration.GetConnectionString("SquirrelDB"),
-                    sqlServerOptionsAction: sqlOptions =>
-                    {
-                        sqlOptions.CommandTimeout((int)TimeSpan.FromSeconds(SettingConstants.DatabaseSettings.TIMEOUT_FROM_SECONDS).TotalSeconds);
-                        //sqlOptions.EnableRetryOnFailure();
-                    })
+                .UseNpgsql(configuration.GetConnectionString("SquirrelDB"))
                 .EnableDetailedErrors()
                 .Options;
         }

@@ -11,6 +11,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using SquirrelUser = Squirrel.Infrastructure.Databases.SquirrelDB.Entities.User;
+using Squirrel.Application.Authenticate.Login.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace Squirrel.Application.Authenticate.Login
 {
@@ -70,9 +72,6 @@ namespace Squirrel.Application.Authenticate.Login
 
                     await Task.WhenAll(tasks);
 
-                    // Set values retrieved into response.
-                    response.UserName = user.UserName;
-
                     return response;
                 }
                 else
@@ -126,9 +125,11 @@ namespace Squirrel.Application.Authenticate.Login
 
             var jwtToken = new JwtSecurityTokenHandler().WriteToken(token);
 
+            var userInfo = await _dbContext.UserInformations.FirstOrDefaultAsync(x=>x.UserId == user.Id);
+
             return new LoginResponse()
             {
-                UserName = user.UserName,
+                UserInfo = _mapper.Map<UserInfoModel>(userInfo),
                 Email = user.Email,
                 Token = jwtToken,
                 Expiration = tokenValidTo,

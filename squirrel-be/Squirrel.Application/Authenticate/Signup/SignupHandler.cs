@@ -10,6 +10,7 @@ using Squirrel.Domain.Exceptions;
 using Squirrel.Domain.Messages;
 using Squirrel.Infrastructure.Constants;
 using Squirrel.Infrastructure.Databases.SquirrelDB.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Squirrel.Application.Authenticate.Signup
 {

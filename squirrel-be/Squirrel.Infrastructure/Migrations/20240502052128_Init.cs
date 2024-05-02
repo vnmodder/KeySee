@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -17,11 +18,11 @@ namespace Squirrel.Infrastructure.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -32,29 +33,29 @@ namespace Squirrel.Infrastructure.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     InsertUserId = table.Column<int>(type: "INT", nullable: true, comment: "InsertUserId"),
-                    InsertDate = table.Column<DateTime>(type: "DATETIME", nullable: true, defaultValueSql: "GETUTCDATE()", comment: "InsertDate"),
+                    InsertDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true, defaultValueSql: "NOW()", comment: "InsertDate"),
                     UpdateUserId = table.Column<int>(type: "INT", nullable: true, comment: "UpdateUserId"),
-                    UpdateDate = table.Column<DateTime>(type: "DATETIME", nullable: true, defaultValueSql: "GETUTCDATE()", comment: "UpdateDate"),
+                    UpdateDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true, defaultValueSql: "NOW()", comment: "UpdateDate"),
                     DeleteUserId = table.Column<int>(type: "INT", nullable: true, comment: "DeleteUserId"),
-                    DeleteDate = table.Column<DateTime>(type: "DATETIME", nullable: true, defaultValueSql: "GETUTCDATE()", comment: "DeleteDate"),
+                    DeleteDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true, defaultValueSql: "NOW()", comment: "DeleteDate"),
                     Status = table.Column<int>(type: "INT", nullable: false, comment: "Status"),
-                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                    UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "boolean", nullable: false),
+                    PasswordHash = table.Column<string>(type: "text", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "text", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "text", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "text", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "boolean", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "boolean", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "boolean", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -66,17 +67,17 @@ namespace Squirrel.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INT", nullable: false, comment: "Khóa chính")
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    ImgUrl = table.Column<string>(type: "text", nullable: true),
                     InsertUserId = table.Column<int>(type: "INT", nullable: true),
-                    InsertDate = table.Column<DateTime>(type: "DATETIME", nullable: true, defaultValueSql: "GETUTCDATE()"),
+                    InsertDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true, defaultValueSql: "NOW()"),
                     UpdateUserId = table.Column<int>(type: "INT", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "DATETIME", nullable: true, defaultValueSql: "GETUTCDATE()"),
+                    UpdateDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true, defaultValueSql: "NOW()"),
                     DeleteUserId = table.Column<int>(type: "INT", nullable: true),
-                    DeleteDate = table.Column<DateTime>(type: "DATETIME", nullable: true, defaultValueSql: "GETUTCDATE()"),
-                    IsDeleted = table.Column<bool>(type: "BIT", nullable: true, defaultValueSql: "0")
+                    DeleteDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true, defaultValueSql: "NOW()"),
+                    IsDeleted = table.Column<bool>(type: "BOOL", nullable: true, defaultValueSql: "false")
                 },
                 constraints: table =>
                 {
@@ -88,21 +89,21 @@ namespace Squirrel.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INT", nullable: false, comment: "Khóa chính")
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<decimal>(type: "DECIMAL(38,17)", nullable: false),
-                    ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Title = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    Price = table.Column<double>(type: "DECIMAL", nullable: false),
+                    ImgUrl = table.Column<string>(type: "text", nullable: true),
                     CategoryId = table.Column<int>(type: "INT", nullable: false),
                     CompletedLessons = table.Column<int>(type: "INT", nullable: false),
                     TotalLessons = table.Column<int>(type: "INT", nullable: false),
                     InsertUserId = table.Column<int>(type: "INT", nullable: true),
-                    InsertDate = table.Column<DateTime>(type: "DATETIME", nullable: true, defaultValueSql: "GETUTCDATE()"),
+                    InsertDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true, defaultValueSql: "NOW()"),
                     UpdateUserId = table.Column<int>(type: "INT", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "DATETIME", nullable: true, defaultValueSql: "GETUTCDATE()"),
+                    UpdateDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true, defaultValueSql: "NOW()"),
                     DeleteUserId = table.Column<int>(type: "INT", nullable: true),
-                    DeleteDate = table.Column<DateTime>(type: "DATETIME", nullable: true, defaultValueSql: "GETUTCDATE()"),
-                    IsDeleted = table.Column<bool>(type: "BIT", nullable: true, defaultValueSql: "0")
+                    DeleteDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true, defaultValueSql: "NOW()"),
+                    IsDeleted = table.Column<bool>(type: "BOOL", nullable: true, defaultValueSql: "false")
                 },
                 constraints: table =>
                 {
@@ -114,19 +115,19 @@ namespace Squirrel.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INT", nullable: false, comment: "Khóa chính")
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    VideoUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsCompleted = table.Column<bool>(type: "BIT", nullable: false),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Title = table.Column<string>(type: "text", nullable: true),
+                    VideoUrl = table.Column<string>(type: "text", nullable: true),
+                    Content = table.Column<string>(type: "text", nullable: true),
+                    ImgUrl = table.Column<string>(type: "text", nullable: true),
+                    IsCompleted = table.Column<bool>(type: "BOOL", nullable: false),
                     InsertUserId = table.Column<int>(type: "INT", nullable: true),
-                    InsertDate = table.Column<DateTime>(type: "DATETIME", nullable: true, defaultValueSql: "GETUTCDATE()"),
+                    InsertDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true, defaultValueSql: "NOW()"),
                     UpdateUserId = table.Column<int>(type: "INT", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "DATETIME", nullable: true, defaultValueSql: "GETUTCDATE()"),
+                    UpdateDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true, defaultValueSql: "NOW()"),
                     DeleteUserId = table.Column<int>(type: "INT", nullable: true),
-                    DeleteDate = table.Column<DateTime>(type: "DATETIME", nullable: true, defaultValueSql: "GETUTCDATE()"),
-                    IsDeleted = table.Column<bool>(type: "BIT", nullable: true, defaultValueSql: "0")
+                    DeleteDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true, defaultValueSql: "NOW()"),
+                    IsDeleted = table.Column<bool>(type: "BOOL", nullable: true, defaultValueSql: "false")
                 },
                 constraints: table =>
                 {
@@ -138,20 +139,20 @@ namespace Squirrel.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INT", nullable: false, comment: "Khóa chính")
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Date = table.Column<DateTime>(type: "DATETIME", nullable: false),
-                    Amount = table.Column<decimal>(type: "DECIMAL(38,17)", nullable: false),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Date = table.Column<DateTime>(type: "TIMESTAMP", nullable: false),
+                    Amount = table.Column<double>(type: "DECIMAL", nullable: false),
                     Type = table.Column<int>(type: "INT", nullable: false),
                     UserId = table.Column<int>(type: "INT", nullable: false),
                     UserCourseId = table.Column<int>(type: "INT", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
                     InsertUserId = table.Column<int>(type: "INT", nullable: true),
-                    InsertDate = table.Column<DateTime>(type: "DATETIME", nullable: true, defaultValueSql: "GETUTCDATE()"),
+                    InsertDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true, defaultValueSql: "NOW()"),
                     UpdateUserId = table.Column<int>(type: "INT", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "DATETIME", nullable: true, defaultValueSql: "GETUTCDATE()"),
+                    UpdateDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true, defaultValueSql: "NOW()"),
                     DeleteUserId = table.Column<int>(type: "INT", nullable: true),
-                    DeleteDate = table.Column<DateTime>(type: "DATETIME", nullable: true, defaultValueSql: "GETUTCDATE()"),
-                    IsDeleted = table.Column<bool>(type: "BIT", nullable: true, defaultValueSql: "0")
+                    DeleteDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true, defaultValueSql: "NOW()"),
+                    IsDeleted = table.Column<bool>(type: "BOOL", nullable: true, defaultValueSql: "false")
                 },
                 constraints: table =>
                 {
@@ -163,17 +164,17 @@ namespace Squirrel.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INT", nullable: false, comment: "Khóa chính")
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserId = table.Column<int>(type: "INT", nullable: false),
                     CourseId = table.Column<int>(type: "INT", nullable: false),
-                    Date = table.Column<DateTime>(type: "DATETIME", nullable: false),
+                    Date = table.Column<DateTime>(type: "TIMESTAMP", nullable: false),
                     InsertUserId = table.Column<int>(type: "INT", nullable: true),
-                    InsertDate = table.Column<DateTime>(type: "DATETIME", nullable: true, defaultValueSql: "GETUTCDATE()"),
+                    InsertDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true, defaultValueSql: "NOW()"),
                     UpdateUserId = table.Column<int>(type: "INT", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "DATETIME", nullable: true, defaultValueSql: "GETUTCDATE()"),
+                    UpdateDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true, defaultValueSql: "NOW()"),
                     DeleteUserId = table.Column<int>(type: "INT", nullable: true),
-                    DeleteDate = table.Column<DateTime>(type: "DATETIME", nullable: true, defaultValueSql: "GETUTCDATE()"),
-                    IsDeleted = table.Column<bool>(type: "BIT", nullable: true, defaultValueSql: "0")
+                    DeleteDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true, defaultValueSql: "NOW()"),
+                    IsDeleted = table.Column<bool>(type: "BOOL", nullable: true, defaultValueSql: "false")
                 },
                 constraints: table =>
                 {
@@ -184,18 +185,18 @@ namespace Squirrel.Infrastructure.Migrations
                 name: "UserInformations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
                     Balance = table.Column<int>(type: "INT", nullable: false, comment: "Balance"),
                     UserId = table.Column<int>(type: "INT", nullable: false, comment: "UserId"),
-                    InsertUserId = table.Column<int>(type: "int", nullable: true),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdateUserId = table.Column<int>(type: "int", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeleteUserId = table.Column<int>(type: "int", nullable: true),
-                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: true)
+                    InsertUserId = table.Column<int>(type: "integer", nullable: true),
+                    InsertDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    UpdateUserId = table.Column<int>(type: "integer", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DeleteUserId = table.Column<int>(type: "integer", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -206,11 +207,11 @@ namespace Squirrel.Infrastructure.Migrations
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<int>(type: "int", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    RoleId = table.Column<int>(type: "integer", nullable: false),
+                    ClaimType = table.Column<string>(type: "text", nullable: true),
+                    ClaimValue = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -227,11 +228,11 @@ namespace Squirrel.Infrastructure.Migrations
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UserId = table.Column<int>(type: "integer", nullable: false),
+                    ClaimType = table.Column<string>(type: "text", nullable: true),
+                    ClaimValue = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -248,10 +249,10 @@ namespace Squirrel.Infrastructure.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    LoginProvider = table.Column<string>(type: "text", nullable: false),
+                    ProviderKey = table.Column<string>(type: "text", nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "text", nullable: true),
+                    UserId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -268,8 +269,8 @@ namespace Squirrel.Infrastructure.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    RoleId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "integer", nullable: false),
+                    RoleId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -292,10 +293,10 @@ namespace Squirrel.Infrastructure.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UserId = table.Column<int>(type: "integer", nullable: false),
+                    LoginProvider = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Value = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -327,8 +328,7 @@ namespace Squirrel.Infrastructure.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -354,8 +354,7 @@ namespace Squirrel.Infrastructure.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
+                unique: true);
         }
 
         /// <inheritdoc />

@@ -2,10 +2,8 @@ import axios from 'axios';
 import Cookies from 'js-cookie'
 import type { AxiosResponse } from 'axios';
 
-const BASE_URL = 'https://api.keysee.click/api/';
-
 const apiClient = axios.create({
-  baseURL: BASE_URL,
+  baseURL: import.meta.env.VITE_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },

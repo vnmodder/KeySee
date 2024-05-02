@@ -20,8 +20,8 @@ namespace Squirrel.Infrastructure.Databases.Common.BaseEntityConfiguration
 
             builder.Property(entity => entity.InsertDate)
                 .HasColumnName("InsertDate")
-                .HasColumnType("DATETIME")
-                .HasDefaultValueSql("GETUTCDATE()");
+                .HasColumnType("TIMESTAMP")
+                .HasDefaultValueSql("NOW()");
 
             builder.Property(entity => entity.UpdateUserId)
                 .HasColumnName("UpdateUserId")
@@ -29,8 +29,8 @@ namespace Squirrel.Infrastructure.Databases.Common.BaseEntityConfiguration
 
             builder.Property(entity => entity.UpdateDate)
                 .HasColumnName("UpdateDate")
-                .HasColumnType("DATETIME")
-                .HasDefaultValueSql("GETUTCDATE()");
+                .HasColumnType("TIMESTAMP")
+                .HasDefaultValueSql("NOW()");
 
             builder.Property(entity => entity.DeleteUserId)
                 .HasColumnName("DeleteUserId")
@@ -38,12 +38,12 @@ namespace Squirrel.Infrastructure.Databases.Common.BaseEntityConfiguration
 
             builder.Property(entity => entity.DeleteDate)
                 .HasColumnName("DeleteDate")
-                .HasColumnType("DATETIME")
-                .HasDefaultValueSql("GETUTCDATE()");
+                .HasColumnType("TIMESTAMP")
+                .HasDefaultValueSql("NOW()");
             builder.Property(entity => entity.IsDeleted)
                 .HasColumnName("IsDeleted")
-                .HasColumnType("BIT")
-                .HasDefaultValueSql("0");
+                .HasColumnType("BOOL")
+                .HasDefaultValueSql("false");
 
         }
     }

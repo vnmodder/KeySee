@@ -18,7 +18,7 @@ namespace Squirrel.Infrastructure.Databases.SquirrelDB.EntityConfigurations
              .HasColumnType("INT")
              .HasColumnName("CourseId");
             builder.Property(e => e.Date)
-             .HasColumnType("DATETIME")
+             .HasColumnType("TIMESTAMP")
              .HasColumnName("Date");
         }
     }

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Reflection;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Application.Common.MappingProfiles;
 
 namespace Squirrel.Application
 {

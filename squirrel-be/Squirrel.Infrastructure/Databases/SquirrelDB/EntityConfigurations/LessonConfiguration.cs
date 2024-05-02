@@ -24,7 +24,7 @@ namespace Squirrel.Infrastructure.Databases.SquirrelDB.EntityConfigurations
              .IsUnicode(true)
              .HasColumnName("ImgUrl");
             builder.Property(e => e.IsCompleted)
-             .HasColumnType("BIT")
+             .HasColumnType("BOOL")
              .HasColumnName("IsCompleted");
         }
     }

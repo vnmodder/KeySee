@@ -15,8 +15,8 @@ namespace Squirrel.Infrastructure.Databases.SquirrelDB.EntityConfigurations
 
             builder.Property(entity => entity.InsertDate)
                 .HasColumnName("InsertDate")
-                .HasColumnType("DATETIME")
-                .HasDefaultValueSql("GETUTCDATE()")
+                .HasColumnType("TIMESTAMP")
+                .HasDefaultValueSql("NOW()")
                 .HasComment("InsertDate");
 
             builder.Property(entity => entity.UpdateUserId)
@@ -26,8 +26,8 @@ namespace Squirrel.Infrastructure.Databases.SquirrelDB.EntityConfigurations
 
             builder.Property(entity => entity.UpdateDate)
                 .HasColumnName("UpdateDate")
-                .HasColumnType("DATETIME")
-                .HasDefaultValueSql("GETUTCDATE()")
+                .HasColumnType("TIMESTAMP")
+                .HasDefaultValueSql("NOW()")
                 .HasComment("UpdateDate");
 
             builder.Property(entity => entity.DeleteUserId)
@@ -37,8 +37,8 @@ namespace Squirrel.Infrastructure.Databases.SquirrelDB.EntityConfigurations
 
             builder.Property(entity => entity.DeleteDate)
                 .HasColumnName("DeleteDate")
-                .HasColumnType("DATETIME")
-                .HasDefaultValueSql("GETUTCDATE()")
+                .HasColumnType("TIMESTAMP")
+                .HasDefaultValueSql("NOW()")
                 .HasComment("DeleteDate");
 
             builder.Property(entity => entity.Status)
