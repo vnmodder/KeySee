@@ -10,6 +10,7 @@
         string Url { get; }
         string Name { get; }
         string UserName { get; }
+        int UserId { get; }
 
         void DeserializeUserId(string userSerialized);
     }
