@@ -1,18 +1,12 @@
 <script setup lang="ts">
 import { RouterView, useRoute } from 'vue-router'
-import {Topbar, Navbar, PageFooter} from "@/components"
+//import {Topbar, Navbar, PageFooter} from "@/components/user"
 
 const route = useRoute()
 </script>
 
 <template>
-
-  <Topbar v-if="route.meta.layout !== 'empty'" />
-  <Navbar v-if="route.meta.layout !== 'empty'" />
-
-  <RouterView />
-
-  <PageFooter v-if="route.meta.layout !== 'empty'" />
+  <router-view />
 </template>
 
 <style scoped></style>
