@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Squirrel.Infrastructure.Databases.SquirrelDB;
@@ -11,9 +12,11 @@ using Squirrel.Infrastructure.Databases.SquirrelDB;
 namespace Squirrel.Infrastructure.Migrations
 {
     [DbContext(typeof(SquirrelDbContext))]
-    partial class SquirrelDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240508015205_UpdateLession")]
+    partial class UpdateLession
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

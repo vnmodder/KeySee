@@ -1909,3 +1909,377 @@ UPDATE "AspNetUsers" SET "AccessFailedCount" = @p4, "ConcurrencyStamp" = @p5, "D
 WHERE "Id" = @p25 AND "ConcurrencyStamp" = @p26;
 
 GO
+DECLARE @p24 NVARCHAR(MAX) = N'admin';
+DECLARE @p23 NVARCHAR(MAX) = N'';
+DECLARE @p22 NVARCHAR(MAX) = N'';
+DECLARE @p21 BOOL = 0;
+DECLARE @p20 INT = 0;
+DECLARE @p19 NVARCHAR(MAX) = N'KNHCJPVMJ3UL23AI3WJFHZV44UHGGH42';
+DECLARE @p18 BOOL = 0;
+DECLARE @p17 NVARCHAR(MAX) = N'';
+DECLARE @p16 NVARCHAR(MAX) = N'AQAAAAIAAYagAAAAEHn+mgwgiXp2Y7gNPMdv78vNHQlnsYcSSJuvCsBE3ywBR8SUl+cMQftEducpH8EwzA==';
+DECLARE @p15 NVARCHAR(MAX) = N'ADMIN';
+DECLARE @p14 NVARCHAR(MAX) = N'SQUIRREL.IO.VN@GMAIL.COM';
+DECLARE @p13 NVARCHAR(MAX) = N'';
+DECLARE @p12 BOOL = 1;
+DECLARE @p11 NVARCHAR(MAX) = N'';
+DECLARE @p10 TIMESTAMP = '2024-05-02T15:04:27';
+DECLARE @p9 BOOL = 0;
+DECLARE @p8 NVARCHAR(MAX) = N'squirrel.io.vn@gmail.com';
+DECLARE @p7 NVARCHAR(MAX) = N'';
+DECLARE @p6 NVARCHAR(MAX) = N'';
+DECLARE @p26 NVARCHAR(MAX) = N'61929005-3a88-44ae-93d8-c1c8765c79ea';
+DECLARE @p5 NVARCHAR(MAX) = N'604dfe2d-74c5-404f-9967-f7746405cfac';
+DECLARE @p4 INT = 0;
+DECLARE @p25 INT = 10;
+DECLARE @p0 NVARCHAR(MAX) = N'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImp0aSI6IjQyZmRiMDVjLTQ1OTYtNDY2Zi04OTgxLTUxYTcwYmRlZTc1NiIsImV4cCI6MTcxNTA4NjYwMSwiaXNzIjoiU3F1aXJyZWxJc3N1ZXIifQ.gs3EDL-vFeRiT2UdbWlMXAYNcRNpu454HEadaZmNGqs';
+DECLARE @p3 INT = 10;
+DECLARE @p2 NVARCHAR(MAX) = N'Squirrel_Token';
+DECLARE @p1 NVARCHAR(MAX) = N'Squirrel_Server';
+UPDATE "AspNetUserTokens" SET "Value" = @p0
+WHERE "LoginProvider" = @p1 AND "Name" = @p2 AND "UserId" = @p3;
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p4, "ConcurrencyStamp" = @p5, "DeleteDate" = @p6, "DeleteUserId" = @p7, "Email" = @p8, "EmailConfirmed" = @p9, "InsertDate" = @p10, "InsertUserId" = @p11, "LockoutEnabled" = @p12, "LockoutEnd" = @p13, "NormalizedEmail" = @p14, "NormalizedUserName" = @p15, "PasswordHash" = @p16, "PhoneNumber" = @p17, "PhoneNumberConfirmed" = @p18, "SecurityStamp" = @p19, "Status" = @p20, "TwoFactorEnabled" = @p21, "UpdateDate" = @p22, "UpdateUserId" = @p23, "UserName" = @p24
+WHERE "Id" = @p25 AND "ConcurrencyStamp" = @p26;
+
+GO
+DECLARE @p24 NVARCHAR(MAX) = N'admin';
+DECLARE @p23 NVARCHAR(MAX) = N'';
+DECLARE @p22 NVARCHAR(MAX) = N'';
+DECLARE @p21 BOOL = 0;
+DECLARE @p20 INT = 0;
+DECLARE @p19 NVARCHAR(MAX) = N'KNHCJPVMJ3UL23AI3WJFHZV44UHGGH42';
+DECLARE @p18 BOOL = 0;
+DECLARE @p17 NVARCHAR(MAX) = N'';
+DECLARE @p16 NVARCHAR(MAX) = N'AQAAAAIAAYagAAAAEHn+mgwgiXp2Y7gNPMdv78vNHQlnsYcSSJuvCsBE3ywBR8SUl+cMQftEducpH8EwzA==';
+DECLARE @p15 NVARCHAR(MAX) = N'ADMIN';
+DECLARE @p14 NVARCHAR(MAX) = N'SQUIRREL.IO.VN@GMAIL.COM';
+DECLARE @p13 NVARCHAR(MAX) = N'';
+DECLARE @p12 BOOL = 1;
+DECLARE @p11 NVARCHAR(MAX) = N'';
+DECLARE @p10 TIMESTAMP = '2024-05-02T15:04:27';
+DECLARE @p9 BOOL = 0;
+DECLARE @p8 NVARCHAR(MAX) = N'squirrel.io.vn@gmail.com';
+DECLARE @p7 NVARCHAR(MAX) = N'';
+DECLARE @p6 NVARCHAR(MAX) = N'';
+DECLARE @p26 NVARCHAR(MAX) = N'604dfe2d-74c5-404f-9967-f7746405cfac';
+DECLARE @p5 NVARCHAR(MAX) = N'709d77ee-e5e5-4607-9905-302287a8e80c';
+DECLARE @p4 INT = 0;
+DECLARE @p25 INT = 10;
+DECLARE @p0 NVARCHAR(MAX) = N'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImp0aSI6ImM2Y2YwM2UxLTE5YTUtNGQxNC1iNDI3LTM4MjgzZjFkNjE5NSIsImV4cCI6MTcxNTE2MjkxNiwiaXNzIjoiU3F1aXJyZWxJc3N1ZXIifQ.kOnmVOHOXvJ0YvIBbi5_9Zss1v6RuyXNiG5KJyYB5Co';
+DECLARE @p3 INT = 10;
+DECLARE @p2 NVARCHAR(MAX) = N'Squirrel_Token';
+DECLARE @p1 NVARCHAR(MAX) = N'Squirrel_Server';
+UPDATE "AspNetUserTokens" SET "Value" = @p0
+WHERE "LoginProvider" = @p1 AND "Name" = @p2 AND "UserId" = @p3;
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p4, "ConcurrencyStamp" = @p5, "DeleteDate" = @p6, "DeleteUserId" = @p7, "Email" = @p8, "EmailConfirmed" = @p9, "InsertDate" = @p10, "InsertUserId" = @p11, "LockoutEnabled" = @p12, "LockoutEnd" = @p13, "NormalizedEmail" = @p14, "NormalizedUserName" = @p15, "PasswordHash" = @p16, "PhoneNumber" = @p17, "PhoneNumberConfirmed" = @p18, "SecurityStamp" = @p19, "Status" = @p20, "TwoFactorEnabled" = @p21, "UpdateDate" = @p22, "UpdateUserId" = @p23, "UserName" = @p24
+WHERE "Id" = @p25 AND "ConcurrencyStamp" = @p26;
+
+GO
+DECLARE @p7 NVARCHAR(MAX) = N'';
+DECLARE @p6 NVARCHAR(MAX) = N'string';
+DECLARE @p5 BOOL = 0;
+DECLARE @p4 INT = 1;
+DECLARE @p3 TIMESTAMP = '2024-05-08T10:13:03';
+DECLARE @p2 NVARCHAR(MAX) = N'string';
+DECLARE @p1 NVARCHAR(MAX) = N'string';
+DECLARE @p0 NVARCHAR(MAX) = N'';
+INSERT INTO "Categories" ("DeleteUserId", "Description", "ImgUrl", "InsertDate", "InsertUserId", "IsDeleted", "Name", "UpdateUserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7)
+RETURNING "Id", "DeleteDate", "UpdateDate";
+
+GO
+DECLARE @p7 NVARCHAR(MAX) = N'';
+DECLARE @p6 NVARCHAR(MAX) = N'string';
+DECLARE @p5 BOOL = 0;
+DECLARE @p4 INT = 1;
+DECLARE @p3 TIMESTAMP = '2024-05-08T10:13:03';
+DECLARE @p2 NVARCHAR(MAX) = N'string';
+DECLARE @p1 NVARCHAR(MAX) = N'string';
+DECLARE @p0 NVARCHAR(MAX) = N'';
+INSERT INTO "Categories" ("DeleteUserId", "Description", "ImgUrl", "InsertDate", "InsertUserId", "IsDeleted", "Name", "UpdateUserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7)
+RETURNING "Id", "DeleteDate", "UpdateDate";
+
+GO
+DECLARE @p7 NVARCHAR(MAX) = N'';
+DECLARE @p6 NVARCHAR(MAX) = N'string';
+DECLARE @p5 BOOL = 0;
+DECLARE @p4 INT = 1;
+DECLARE @p3 TIMESTAMP = '2024-05-08T10:13:03';
+DECLARE @p2 NVARCHAR(MAX) = N'string';
+DECLARE @p1 NVARCHAR(MAX) = N'string';
+DECLARE @p0 NVARCHAR(MAX) = N'';
+INSERT INTO "Categories" ("DeleteUserId", "Description", "ImgUrl", "InsertDate", "InsertUserId", "IsDeleted", "Name", "UpdateUserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7)
+RETURNING "Id", "DeleteDate", "UpdateDate";
+
+GO
+ALTER TABLE "Course" DROP CONSTRAINT "PK_Course";
+
+GO
+ALTER TABLE "Course" DROP CONSTRAINT "PK_Course";
+
+GO
+ALTER TABLE "Course" RENAME TO "Courses";
+
+GO
+ALTER TABLE "Course" RENAME TO "Courses";
+
+GO
+ALTER TABLE "UserInformations" ALTER COLUMN "UpdateDate" TYPE timestamp without time zone;
+
+GO
+ALTER TABLE "UserInformations" ALTER COLUMN "UpdateDate" TYPE timestamp without time zone;
+
+GO
+ALTER TABLE "UserInformations" ALTER COLUMN "InsertDate" TYPE timestamp without time zone;
+
+GO
+ALTER TABLE "UserInformations" ALTER COLUMN "InsertDate" TYPE timestamp without time zone;
+
+GO
+ALTER TABLE "UserInformations" ALTER COLUMN "DeleteDate" TYPE timestamp without time zone;
+
+GO
+ALTER TABLE "UserInformations" ALTER COLUMN "DeleteDate" TYPE timestamp without time zone;
+
+GO
+ALTER TABLE "Lessons" ADD "CourseId" integer NOT NULL DEFAULT 0;
+
+GO
+ALTER TABLE "Lessons" ADD "CourseId" integer NOT NULL DEFAULT 0;
+
+GO
+ALTER TABLE "Courses" ADD CONSTRAINT "PK_Courses" PRIMARY KEY ("Id");
+
+GO
+ALTER TABLE "Courses" ADD CONSTRAINT "PK_Courses" PRIMARY KEY ("Id");
+
+GO
+UPDATE "AspNetRoles" SET "NormalizedName" = 'ZERO'
+WHERE "Id" = 1;
+
+GO
+UPDATE "AspNetRoles" SET "NormalizedName" = 'ZERO'
+WHERE "Id" = 1;
+
+GO
+UPDATE "AspNetRoles" SET "NormalizedName" = 'ADMIN'
+WHERE "Id" = 2;
+
+GO
+UPDATE "AspNetRoles" SET "NormalizedName" = 'ADMIN'
+WHERE "Id" = 2;
+
+GO
+UPDATE "AspNetRoles" SET "NormalizedName" = 'USER'
+WHERE "Id" = 3;
+
+GO
+UPDATE "AspNetRoles" SET "NormalizedName" = 'USER'
+WHERE "Id" = 3;
+
+GO
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20240508015205_UpdateLession', '7.0.13');
+
+GO
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20240508015205_UpdateLession', '7.0.13');
+
+GO
+DECLARE @p24 NVARCHAR(MAX) = N'admin';
+DECLARE @p23 NVARCHAR(MAX) = N'';
+DECLARE @p22 NVARCHAR(MAX) = N'';
+DECLARE @p21 BOOL = 0;
+DECLARE @p20 INT = 0;
+DECLARE @p19 NVARCHAR(MAX) = N'KNHCJPVMJ3UL23AI3WJFHZV44UHGGH42';
+DECLARE @p18 BOOL = 0;
+DECLARE @p17 NVARCHAR(MAX) = N'';
+DECLARE @p16 NVARCHAR(MAX) = N'AQAAAAIAAYagAAAAEHn+mgwgiXp2Y7gNPMdv78vNHQlnsYcSSJuvCsBE3ywBR8SUl+cMQftEducpH8EwzA==';
+DECLARE @p15 NVARCHAR(MAX) = N'ADMIN';
+DECLARE @p14 NVARCHAR(MAX) = N'SQUIRREL.IO.VN@GMAIL.COM';
+DECLARE @p13 NVARCHAR(MAX) = N'';
+DECLARE @p12 BOOL = 1;
+DECLARE @p11 NVARCHAR(MAX) = N'';
+DECLARE @p10 TIMESTAMP = '2024-05-02T15:04:27';
+DECLARE @p9 BOOL = 0;
+DECLARE @p8 NVARCHAR(MAX) = N'squirrel.io.vn@gmail.com';
+DECLARE @p7 NVARCHAR(MAX) = N'';
+DECLARE @p6 NVARCHAR(MAX) = N'';
+DECLARE @p26 NVARCHAR(MAX) = N'709d77ee-e5e5-4607-9905-302287a8e80c';
+DECLARE @p5 NVARCHAR(MAX) = N'0b263e99-d287-422b-9995-aa9dcb95b55a';
+DECLARE @p4 INT = 0;
+DECLARE @p25 INT = 10;
+DECLARE @p0 NVARCHAR(MAX) = N'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImp0aSI6ImQxMDgwOWRjLTEzM2MtNGU1OS05M2Y4LTkxZmMwNzM4MDM4YiIsImV4cCI6MTcxNTE2Nzc2MywiaXNzIjoiU3F1aXJyZWxJc3N1ZXIifQ.L0ECbgGs4gE9ArGytEFK_DSXwC-n7nuJ3NAgKdhYLrA';
+DECLARE @p3 INT = 10;
+DECLARE @p2 NVARCHAR(MAX) = N'Squirrel_Token';
+DECLARE @p1 NVARCHAR(MAX) = N'Squirrel_Server';
+UPDATE "AspNetUserTokens" SET "Value" = @p0
+WHERE "LoginProvider" = @p1 AND "Name" = @p2 AND "UserId" = @p3;
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p4, "ConcurrencyStamp" = @p5, "DeleteDate" = @p6, "DeleteUserId" = @p7, "Email" = @p8, "EmailConfirmed" = @p9, "InsertDate" = @p10, "InsertUserId" = @p11, "LockoutEnabled" = @p12, "LockoutEnd" = @p13, "NormalizedEmail" = @p14, "NormalizedUserName" = @p15, "PasswordHash" = @p16, "PhoneNumber" = @p17, "PhoneNumberConfirmed" = @p18, "SecurityStamp" = @p19, "Status" = @p20, "TwoFactorEnabled" = @p21, "UpdateDate" = @p22, "UpdateUserId" = @p23, "UserName" = @p24
+WHERE "Id" = @p25 AND "ConcurrencyStamp" = @p26;
+
+GO
+DECLARE @p24 NVARCHAR(MAX) = N'admin';
+DECLARE @p23 NVARCHAR(MAX) = N'';
+DECLARE @p22 NVARCHAR(MAX) = N'';
+DECLARE @p21 BOOL = 0;
+DECLARE @p20 INT = 0;
+DECLARE @p19 NVARCHAR(MAX) = N'KNHCJPVMJ3UL23AI3WJFHZV44UHGGH42';
+DECLARE @p18 BOOL = 0;
+DECLARE @p17 NVARCHAR(MAX) = N'';
+DECLARE @p16 NVARCHAR(MAX) = N'AQAAAAIAAYagAAAAEHn+mgwgiXp2Y7gNPMdv78vNHQlnsYcSSJuvCsBE3ywBR8SUl+cMQftEducpH8EwzA==';
+DECLARE @p15 NVARCHAR(MAX) = N'ADMIN';
+DECLARE @p14 NVARCHAR(MAX) = N'SQUIRREL.IO.VN@GMAIL.COM';
+DECLARE @p13 NVARCHAR(MAX) = N'';
+DECLARE @p12 BOOL = 1;
+DECLARE @p11 NVARCHAR(MAX) = N'';
+DECLARE @p10 TIMESTAMP = '2024-05-02T15:04:27';
+DECLARE @p9 BOOL = 0;
+DECLARE @p8 NVARCHAR(MAX) = N'squirrel.io.vn@gmail.com';
+DECLARE @p7 NVARCHAR(MAX) = N'';
+DECLARE @p6 NVARCHAR(MAX) = N'';
+DECLARE @p26 NVARCHAR(MAX) = N'0b263e99-d287-422b-9995-aa9dcb95b55a';
+DECLARE @p5 NVARCHAR(MAX) = N'7b9b30cb-ac17-4373-82aa-4be87a3a5dd4';
+DECLARE @p4 INT = 0;
+DECLARE @p25 INT = 10;
+DECLARE @p0 NVARCHAR(MAX) = N'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImp0aSI6IjMwMWEwMGFhLTY0MTctNGIwYS1hYThhLWZkOWYxMTNiOWVjOCIsImV4cCI6MTcxNTE2OTM1MCwiaXNzIjoiU3F1aXJyZWxJc3N1ZXIifQ.f6xNoPAnfx4mT2T9wQP3lzf39dhaYOOq3t-NDEJozt4';
+DECLARE @p3 INT = 10;
+DECLARE @p2 NVARCHAR(MAX) = N'Squirrel_Token';
+DECLARE @p1 NVARCHAR(MAX) = N'Squirrel_Server';
+UPDATE "AspNetUserTokens" SET "Value" = @p0
+WHERE "LoginProvider" = @p1 AND "Name" = @p2 AND "UserId" = @p3;
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p4, "ConcurrencyStamp" = @p5, "DeleteDate" = @p6, "DeleteUserId" = @p7, "Email" = @p8, "EmailConfirmed" = @p9, "InsertDate" = @p10, "InsertUserId" = @p11, "LockoutEnabled" = @p12, "LockoutEnd" = @p13, "NormalizedEmail" = @p14, "NormalizedUserName" = @p15, "PasswordHash" = @p16, "PhoneNumber" = @p17, "PhoneNumberConfirmed" = @p18, "SecurityStamp" = @p19, "Status" = @p20, "TwoFactorEnabled" = @p21, "UpdateDate" = @p22, "UpdateUserId" = @p23, "UserName" = @p24
+WHERE "Id" = @p25 AND "ConcurrencyStamp" = @p26;
+
+GO
+DECLARE @p10 NVARCHAR(MAX) = N'';
+DECLARE @p9 INT = 0;
+DECLARE @p8 NVARCHAR(MAX) = N'C# cơ bản';
+DECLARE @p7 FLOAT = N'0';
+DECLARE @p6 BOOL = 0;
+DECLARE @p5 NVARCHAR(MAX) = N'';
+DECLARE @p4 NVARCHAR(MAX) = N'string';
+DECLARE @p3 NVARCHAR(MAX) = N'string';
+DECLARE @p2 NVARCHAR(MAX) = N'';
+DECLARE @p1 INT = 0;
+DECLARE @p0 INT = 1;
+INSERT INTO "Courses" ("CategoryId", "CompletedLessons", "DeleteUserId", "Description", "ImgUrl", "InsertUserId", "IsDeleted", "Price", "Title", "TotalLessons", "UpdateUserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10)
+RETURNING "Id", "DeleteDate", "InsertDate", "UpdateDate";
+
+GO
+DECLARE @p10 NVARCHAR(MAX) = N'';
+DECLARE @p9 INT = 0;
+DECLARE @p8 NVARCHAR(MAX) = N'C# cơ bản';
+DECLARE @p7 FLOAT = N'0';
+DECLARE @p6 BOOL = 0;
+DECLARE @p5 NVARCHAR(MAX) = N'';
+DECLARE @p4 NVARCHAR(MAX) = N'string';
+DECLARE @p3 NVARCHAR(MAX) = N'string';
+DECLARE @p2 NVARCHAR(MAX) = N'';
+DECLARE @p1 INT = 0;
+DECLARE @p0 INT = 1;
+INSERT INTO "Courses" ("CategoryId", "CompletedLessons", "DeleteUserId", "Description", "ImgUrl", "InsertUserId", "IsDeleted", "Price", "Title", "TotalLessons", "UpdateUserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10)
+RETURNING "Id", "DeleteDate", "InsertDate", "UpdateDate";
+
+GO
+DECLARE @p10 NVARCHAR(MAX) = N'';
+DECLARE @p9 INT = 0;
+DECLARE @p8 NVARCHAR(MAX) = N'C# cơ bản';
+DECLARE @p7 FLOAT = N'0';
+DECLARE @p6 BOOL = 0;
+DECLARE @p5 NVARCHAR(MAX) = N'';
+DECLARE @p4 NVARCHAR(MAX) = N'string';
+DECLARE @p3 NVARCHAR(MAX) = N'string';
+DECLARE @p2 NVARCHAR(MAX) = N'';
+DECLARE @p1 INT = 0;
+DECLARE @p0 INT = 1;
+INSERT INTO "Courses" ("CategoryId", "CompletedLessons", "DeleteUserId", "Description", "ImgUrl", "InsertUserId", "IsDeleted", "Price", "Title", "TotalLessons", "UpdateUserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10)
+RETURNING "Id", "DeleteDate", "InsertDate", "UpdateDate";
+
+GO
+DECLARE @p10 NVARCHAR(MAX) = N'';
+DECLARE @p9 INT = 0;
+DECLARE @p8 NVARCHAR(MAX) = N'C# nâng cao';
+DECLARE @p7 FLOAT = N'0';
+DECLARE @p6 BOOL = 0;
+DECLARE @p5 NVARCHAR(MAX) = N'';
+DECLARE @p4 NVARCHAR(MAX) = N'string';
+DECLARE @p3 NVARCHAR(MAX) = N'string';
+DECLARE @p2 NVARCHAR(MAX) = N'';
+DECLARE @p1 INT = 0;
+DECLARE @p0 INT = 1;
+INSERT INTO "Courses" ("CategoryId", "CompletedLessons", "DeleteUserId", "Description", "ImgUrl", "InsertUserId", "IsDeleted", "Price", "Title", "TotalLessons", "UpdateUserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10)
+RETURNING "Id", "DeleteDate", "InsertDate", "UpdateDate";
+
+GO
+DECLARE @p10 NVARCHAR(MAX) = N'';
+DECLARE @p9 INT = 0;
+DECLARE @p8 NVARCHAR(MAX) = N'C# nâng cao';
+DECLARE @p7 FLOAT = N'0';
+DECLARE @p6 BOOL = 0;
+DECLARE @p5 NVARCHAR(MAX) = N'';
+DECLARE @p4 NVARCHAR(MAX) = N'string';
+DECLARE @p3 NVARCHAR(MAX) = N'string';
+DECLARE @p2 NVARCHAR(MAX) = N'';
+DECLARE @p1 INT = 0;
+DECLARE @p0 INT = 1;
+INSERT INTO "Courses" ("CategoryId", "CompletedLessons", "DeleteUserId", "Description", "ImgUrl", "InsertUserId", "IsDeleted", "Price", "Title", "TotalLessons", "UpdateUserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10)
+RETURNING "Id", "DeleteDate", "InsertDate", "UpdateDate";
+
+GO
+DECLARE @p10 NVARCHAR(MAX) = N'';
+DECLARE @p9 INT = 0;
+DECLARE @p8 NVARCHAR(MAX) = N'C# nâng cao';
+DECLARE @p7 FLOAT = N'0';
+DECLARE @p6 BOOL = 0;
+DECLARE @p5 NVARCHAR(MAX) = N'';
+DECLARE @p4 NVARCHAR(MAX) = N'string';
+DECLARE @p3 NVARCHAR(MAX) = N'string';
+DECLARE @p2 NVARCHAR(MAX) = N'';
+DECLARE @p1 INT = 0;
+DECLARE @p0 INT = 1;
+INSERT INTO "Courses" ("CategoryId", "CompletedLessons", "DeleteUserId", "Description", "ImgUrl", "InsertUserId", "IsDeleted", "Price", "Title", "TotalLessons", "UpdateUserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10)
+RETURNING "Id", "DeleteDate", "InsertDate", "UpdateDate";
+
+GO
+DECLARE @p24 NVARCHAR(MAX) = N'admin';
+DECLARE @p23 NVARCHAR(MAX) = N'';
+DECLARE @p22 NVARCHAR(MAX) = N'';
+DECLARE @p21 BOOL = 0;
+DECLARE @p20 INT = 0;
+DECLARE @p19 NVARCHAR(MAX) = N'KNHCJPVMJ3UL23AI3WJFHZV44UHGGH42';
+DECLARE @p18 BOOL = 0;
+DECLARE @p17 NVARCHAR(MAX) = N'';
+DECLARE @p16 NVARCHAR(MAX) = N'AQAAAAIAAYagAAAAEHn+mgwgiXp2Y7gNPMdv78vNHQlnsYcSSJuvCsBE3ywBR8SUl+cMQftEducpH8EwzA==';
+DECLARE @p15 NVARCHAR(MAX) = N'ADMIN';
+DECLARE @p14 NVARCHAR(MAX) = N'SQUIRREL.IO.VN@GMAIL.COM';
+DECLARE @p13 NVARCHAR(MAX) = N'';
+DECLARE @p12 BOOL = 1;
+DECLARE @p11 NVARCHAR(MAX) = N'';
+DECLARE @p10 TIMESTAMP = '2024-05-02T15:04:27';
+DECLARE @p9 BOOL = 0;
+DECLARE @p8 NVARCHAR(MAX) = N'squirrel.io.vn@gmail.com';
+DECLARE @p7 NVARCHAR(MAX) = N'';
+DECLARE @p6 NVARCHAR(MAX) = N'';
+DECLARE @p26 NVARCHAR(MAX) = N'7b9b30cb-ac17-4373-82aa-4be87a3a5dd4';
+DECLARE @p5 NVARCHAR(MAX) = N'b35549d3-49cb-419c-ae57-bb601ed0e07d';
+DECLARE @p4 INT = 0;
+DECLARE @p25 INT = 10;
+DECLARE @p0 NVARCHAR(MAX) = N'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImp0aSI6ImM3YmYzNDE0LWUyMmEtNGM2ZC04NGFmLTZiNTU3NTA2NTQzOCIsImV4cCI6MTcxNTE3MTk2NiwiaXNzIjoiU3F1aXJyZWxJc3N1ZXIifQ.A8HfLzItmMRvJwfdcyAr9z-VwY1tI8lDUSq5EX5PXYU';
+DECLARE @p3 INT = 10;
+DECLARE @p2 NVARCHAR(MAX) = N'Squirrel_Token';
+DECLARE @p1 NVARCHAR(MAX) = N'Squirrel_Server';
+UPDATE "AspNetUserTokens" SET "Value" = @p0
+WHERE "LoginProvider" = @p1 AND "Name" = @p2 AND "UserId" = @p3;
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p4, "ConcurrencyStamp" = @p5, "DeleteDate" = @p6, "DeleteUserId" = @p7, "Email" = @p8, "EmailConfirmed" = @p9, "InsertDate" = @p10, "InsertUserId" = @p11, "LockoutEnabled" = @p12, "LockoutEnd" = @p13, "NormalizedEmail" = @p14, "NormalizedUserName" = @p15, "PasswordHash" = @p16, "PhoneNumber" = @p17, "PhoneNumberConfirmed" = @p18, "SecurityStamp" = @p19, "Status" = @p20, "TwoFactorEnabled" = @p21, "UpdateDate" = @p22, "UpdateUserId" = @p23, "UserName" = @p24
+WHERE "Id" = @p25 AND "ConcurrencyStamp" = @p26;
+
+GO

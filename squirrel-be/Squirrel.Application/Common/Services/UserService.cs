@@ -21,6 +21,7 @@ namespace Squirrel.Application.Common.Services
         public string RoleName => _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Role);
         public string Method => _httpContextAccessor.HttpContext?.Request.Method;
         public string Url => _httpContextAccessor.HttpContext?.Request.Path;
+        public int UserId => 1;
         public DateTime? ClientTime => TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Local, ClientTimeZone);
 
         public string JsonHeader => _httpContextAccessor.HttpContext == null

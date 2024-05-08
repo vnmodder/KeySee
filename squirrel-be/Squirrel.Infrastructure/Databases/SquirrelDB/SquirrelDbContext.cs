@@ -20,7 +20,7 @@ namespace Squirrel.Infrastructure.Databases.SquirrelDB
 
         #region DbSet declarations.
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Course> Course { get; set; }
+        public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Lesson> Lessons { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
