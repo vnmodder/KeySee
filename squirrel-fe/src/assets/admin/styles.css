@@ -1,0 +1,105 @@
+:root {
+  --main-bg-color: #009d63;
+  --main-text-color: #009d63;
+  --second-text-color: #bbbec5;
+  --second-bg-color: #c1efde;
+  --aa-bg-color: #e0eeea;
+}
+
+#admin .primary-text {
+  color: var(--main-text-color) ;
+}
+
+#admin .a-text {
+  color: var(--second-bg-color) ;
+}
+
+#admin .second-text {
+  color: var(--second-text-color) ;
+}
+
+#admin .primary-bg {
+  background-color: var(--main-bg-color) ;
+}
+
+#admin .secondary-bg {
+  background-color: var(--second-bg-color) ;
+}
+
+#admin .rounded-full {
+  border-radius: 100%;
+}
+
+#admin #wrapper {
+  overflow-x: hidden;
+  background-image: linear-gradient(
+    to right,
+    #baf3d7,
+    #c2f5de,
+    #cbf7e4,
+    #d4f8ea,
+    #ddfaef
+  );
+}
+
+#admin #sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+}
+
+#admin #sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#admin #sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#admin #page-content-wrapper {
+  min-width: 100vw;
+}
+
+#admin #wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+#admin #menu-toggle {
+  cursor: pointer;
+}
+
+#admin .table tbody tr.event {
+  background-color: var(--aa-bg-color);
+}
+
+#admin .list-group-item {
+  border: none;
+  padding: 20px 30px;
+}
+
+#admin .list-group-item  {
+  font-weight: 800;
+}
+
+#admin .active{
+  color: var(--main-text-color) !important;
+}
+
+@media (min-width: 768px) {
+ #admin  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #admin #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+ #admin  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}

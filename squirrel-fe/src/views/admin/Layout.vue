@@ -8,7 +8,6 @@
                     <router-view />
                 </div>
             </div>
-            <PageFooter/>
         </div>
     </div> -->
 
