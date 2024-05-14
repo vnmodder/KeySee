@@ -2,7 +2,7 @@
     <div class="mb-3" :class="colControl ? 'col-md-' + colControl : ''">
         <div class="input-group">
             <span v-if="labelValue" class="input-group-text black-text secondary-bg btn-outline-secondary"
-                :id="'inputGroup-sizing-' + id">{{ labelValue }}</span>
+                :id="id">{{ labelValue }}</span>
             <input class="form-control btn-outline-secondary" type="text" v-model="model" :id="id"
                 :placeholder="attribute &&attribute?.placeholder" aria-label="Input" aria-describedby="'inputGroup-sizing-'+id" />
             <button v-if="attribute && attribute?.showClear" @click="clear" class="btn btn-outline-secondary">
