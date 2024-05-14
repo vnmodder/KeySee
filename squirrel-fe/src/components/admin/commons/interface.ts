@@ -1,4 +1,7 @@
 
-interface BaseAttribute {
-    class?: string
+export interface BaseAttribute {
+    id?: string,
+    labelValue?: string
+    colControl?: number
+    className?: string
 }

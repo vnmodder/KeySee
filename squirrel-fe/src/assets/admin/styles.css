@@ -91,6 +91,11 @@
   color: var(--main-text-color) !important;
 }
 
+#admin > .input-group > .admin-form-item:focus ,
+#admin > .input-group > .admin-form-item:hover{
+  color: var(--aa-bg-color) !important;
+}
+
 @media (min-width: 768px) {
  #admin  #sidebar-wrapper {
     margin-left: 0;

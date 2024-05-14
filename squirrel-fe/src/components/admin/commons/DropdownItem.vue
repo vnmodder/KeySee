@@ -3,10 +3,10 @@
         <div class="input-group">
             <span v-if="labelValue" class="input-group-text black-text secondary-bg btn-outline-secondary"
                 :id="'inputGroup-sizing-' + id">{{ labelValue }}</span>
-            <select class="form-select btn-outline-secondary" aria-label="Default select example">
+            <select class="form-select btn-outline-secondary admin-form-item" v-model="model" >
                 <option v-for="item in attribute?.data" 
-                :key="item[attribute?.valueMember??'']"
-                :value="item[attribute?.valueMember??'']">{{ item[attribute?.displayMember??''] }}</option>
+                :key="item[attribute?.valueMember??'']" 
+                :value="item[attribute?.valueMember??'key']">{{ item[attribute?.displayMember??'value'] }}</option>
             </select>
         </div>
     </div>
@@ -14,26 +14,24 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue'
+import type { BaseAttribute } from './interface';
 
-interface Attribute extends BaseAttribute {
+interface Attribute {
     data?: Array<any>,
     valueMember?: string,
     displayMember?: string,
+    placeholder?: string
 }
 
-interface Props {
-    id?: string,
-    labelValue?: string
-    inputValue?: string
-    placeholder?: string
-    colControl?: number
+interface Props extends BaseAttribute  {
     attribute?: Attribute
 }
+
+const model = defineModel()
 
 withDefaults(defineProps<Props>(), {
     id: '',
     labelValue: '',
-    inputValue: '',
     placeholder: '',
     colControl: 4,
 })
