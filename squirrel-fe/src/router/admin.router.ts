@@ -1,4 +1,4 @@
-import {Layout, HomeView,AboutView } from '@/views/admin';
+import {Layout, HomeView,AboutView,CategoryView } from '@/views/admin';
 
 export default {
     path: '/admin',
@@ -6,6 +6,6 @@ export default {
     children: [
         { path: '', component: HomeView },
         { path: 'about', component: AboutView },
-
+        { path: 'category', component: CategoryView }
     ]
 };

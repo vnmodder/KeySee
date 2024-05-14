@@ -1,5 +1,5 @@
 <template>
-    <table v-if="headers?.length" class="table bg-white rounded shadow-sm table-hover">
+    <table v-if="headers && headers?.length" class="table bg-white rounded shadow-sm table-hover">
         <thead>
             <tr class="primary-bg  text-white">
                 <th scope="col" width="50" class="text-center">#</th>
@@ -24,8 +24,8 @@
 </template>
 
 <script setup lang="ts">
-import { ColumnStyle } from '@/assets/enums/admin.enums';
-
+import { ColumnStyle } from '@/enums/admin.enums';
+import {defineProps} from 'vue'
 
 interface Props {
     headers?: Array<Header>,
