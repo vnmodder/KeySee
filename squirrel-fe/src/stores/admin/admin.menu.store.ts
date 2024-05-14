@@ -11,7 +11,6 @@ export const adminMenuStore =  defineStore({
             return menuItems;
         },
         updateMenuState(path:string){
-            console.log(path)
             menuItems.forEach(x=>{
                 x.isAtive = path==x.href
             });

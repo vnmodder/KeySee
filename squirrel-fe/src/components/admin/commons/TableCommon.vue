@@ -2,20 +2,20 @@
     <table v-if="headers && headers?.length" class="table bg-white rounded shadow-sm table-hover">
         <thead>
             <tr class="primary-bg  text-white">
-                <th scope="col" width="50" class="text-center">#</th>
+                <th scope="col" width="50" class="text-center" v-if="showRowHeader">#</th>
                 <th v-for="h in headers" :key="h.name" class="text-center" scope="col">{{ h.name }}</th>
             </tr>
         </thead>
         <tbody v-if="items?.length">
             <tr v-for="(row, index1) in items" :key="index1" :class="index1 % 2 == 1 ? 'event' : ''">
-                <td v-if="row.length" class="text-center" scope="row">{{ index1 + 1 }}</td>
-                <td v-if="row.length" v-for="(col, index) in row" :key="index" :class="[
-                    headers[index].textAlign ? 'text-' + headers[index].textAlign : 'text-left']">
-                    <span v-if="(!headers[index].columnStyle || headers[index].columnStyle == ColumnStyle.text)">
-                        {{ col }}
+                <td  class="text-center" scope="row" v-if="showRowHeader">{{ index1 + 1 }}</td>
+                <td  v-for="(h, index) in headers" :key="index" :class="[
+                    h.textAlign ? 'text-' + h.textAlign : 'text-left']">
+                    <span v-if="h.columnStyle == ColumnStyle.text || !h.columnStyle ">
+                        {{ row[h.id] }}
                     </span>
-                    <span v-if="headers[index].columnStyle == ColumnStyle.number">
-                        {{ new Intl.NumberFormat('vi-VN').format(col) }}
+                    <span v-if="h.columnStyle == ColumnStyle.number">
+                        {{ new Intl.NumberFormat('vi-VN').format(row[h.id] ) }}
                     </span>
                 </td>
             </tr>
@@ -29,10 +29,12 @@ import {defineProps} from 'vue'
 
 interface Props {
     headers?: Array<Header>,
-    items?: Array<Array<any>>
+    items?: Array<any>,
+    showRowHeader?: boolean
 }
 
 interface Header {
+    id:string
     name: string,
     textAlign?: string,
     fomatValue?: string
@@ -41,6 +43,7 @@ interface Header {
 
 withDefaults(defineProps<Props>(), {
     headers: Array,
-    items: Array
+    items: Array,
+    showRowHeader:true
 })
 </script>

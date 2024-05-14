@@ -15,12 +15,12 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white fw-bold" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user me-2"></i>John Doe
+                        <i class="fas fa-user me-2"></i>{{ user?.name }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#">Profile</a></li>
                         <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                        <li><a class="dropdown-item" @click="logout" href="/login">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -30,6 +30,20 @@
 
 <script setup lang="ts">
 import {defineProps} from 'vue'
+import { userStore } from '../../stores/auth';
+import { storeToRefs } from 'pinia';
+import Cookies from 'js-cookie'
+
+
+const authStore = userStore();
+const { user } = storeToRefs(authStore);
+
+const logout = async () => {
+    await authStore.logout();
+    Cookies.remove('token')
+};
+
+
 interface Props {
     menuToggleClick?: ()=> void,
     title?:string,

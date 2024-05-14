@@ -18,6 +18,11 @@
   color: var(--second-text-color) ;
 }
 
+#admin .black-text {
+  color: #000000 ;
+}
+
+
 #admin .primary-bg {
   background-color: var(--main-bg-color) ;
 }

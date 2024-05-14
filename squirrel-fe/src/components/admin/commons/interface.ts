@@ -1,0 +1,4 @@
+
+interface BaseAttribute {
+    class?: string
+}
