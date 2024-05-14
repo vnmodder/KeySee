@@ -5,10 +5,10 @@
                 :id="'inputGroup-sizing-' + id">{{ labelValue }}</span>
             <input class="form-control btn-outline-secondary" type="text" v-model="model" :id="id"
                 :placeholder="attribute &&attribute?.placeholder" aria-label="Input" aria-describedby="'inputGroup-sizing-'+id" />
-            <button v-if="attribute && attribute?.showClear" class="btn btn-outline-secondary">
+            <button v-if="attribute && attribute?.showClear" @click="clear" class="btn btn-outline-secondary">
                 <i class="fas fa-times "></i>
             </button>
-            <button v-if="attribute && attribute?.showSearch" class="btn btn-outline-secondary">
+            <button v-if="attribute && attribute?.showSearch" @click="attribute?.onSearchClick && attribute.onSearchClick(model)" class="btn btn-outline-secondary">
                 <i class="fas fa-search "></i>
             </button>
         </div>
@@ -16,26 +16,31 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps  } from 'vue'
+import { defineProps } from 'vue'
 import type { BaseAttribute } from './interface';
 
 interface Attribute {
     placeholder?: string
     showClear?: boolean
     showSearch?: boolean
+    onSearchClick?:(value:any|undefined)=>void
 }
 
 interface Props extends BaseAttribute {
     attribute?: Attribute,
-
 }
 
 const model = defineModel()
+
+const clear =()=>{
+    model.value=''
+}
 
 withDefaults(defineProps<Props>(), {
     id: '',
     labelValue: '',
     colControl: 4,
+    attribute:undefined
 })
 
 </script>

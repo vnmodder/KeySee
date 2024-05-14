@@ -7,13 +7,18 @@
 <script setup lang="ts">
 import { SessionItem, GroupItem } from '@/components/admin/commons'
 import {ControlStyle} from '@/enums/admin.enums'
+import {ref} from 'vue'
 
 const btnSubmit= ()=>{
-    console.log(items.find(x=>x.id == 'input1')?.modelValue)
+    console.log(items.value.find(x=>x.id == 'input1')?.modelValue)
+    console.log(items.value.find(x=>x.id == 'input3')?.modelValue)
 }
 
+const btnSearch= (value: string|undefined)=>{
+    console.log(value)
+}
 
-const items = [
+const items = ref([
     {
         id: 'input1',
         labelValue: 'Test sadsad 1',
@@ -23,13 +28,18 @@ const items = [
             placeholder:'sadsadsad sada',
             showClear:true
         },
-        modelValue:'123'
+        modelValue: '1'
     },
     {
         id: 'input2',
         labelValue: 'Test 2',
         colControl: 3,
-        controlStyle: ControlStyle.input
+        controlStyle: ControlStyle.input,
+        attribute:{
+            placeholder:'aa sada',
+            showSearch:true,
+            onSearchClick:btnSearch
+        },
 
     },
     {
@@ -58,6 +68,6 @@ const items = [
             onClick: btnSubmit
         }
     },
-]
+])
 
 </script>

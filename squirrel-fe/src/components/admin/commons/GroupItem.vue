@@ -10,12 +10,11 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps,ref } from 'vue'
+import { defineProps,  } from 'vue'
 import { InputItem, DropdownItem, ButtonItem } from '.';
 import { ControlStyle } from '@/enums/admin.enums';
 import type { BaseAttribute } from './interface';
 
-const myRef = ref()
 
 interface Props {
     config: Array<ItemConfig>
