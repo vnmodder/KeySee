@@ -1,9 +1,10 @@
 <template>
     <div class="mb-3" :class="colControl ? 'col-md-' + colControl : ''">
         <div class="input-group">
-            <span v-if="labelValue" class="input-group-text black-text secondary-bg btn-outline-secondary" :id="id">{{
-                labelValue }}</span>
-            <Datepicker v-model="model"  class="form-control btn-outline-secondary" :typeable="true"  />
+            <label v-if="labelValue" :for="id" class="input-group-text  black-text secondary-bg btn-outline-secondary">{{labelValue }}</label>
+            <div class="form-control admin-datetime-picker">
+                <Datepicker v-model="model" :id="id" class="form-control btn-outline-custom" :inputFormat="'dd/MM/yyyy'" :typeable="true"  />
+            </div>
         </div>
     </div>
 </template>
@@ -34,3 +35,18 @@ withDefaults(defineProps<Props>(), {
     colControl: 4,
 })
 </script>
+
+<style scoped>
+.v3dp__datepicker{
+    width:100%;
+}
+
+.admin-datetime-picker{
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+
+
+</style>

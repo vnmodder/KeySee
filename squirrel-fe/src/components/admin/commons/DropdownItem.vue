@@ -1,9 +1,9 @@
 <template>
     <div class="mb-3" :class="colControl ? 'col-md-' + colControl : ''">
         <div class="input-group">
-            <span v-if="labelValue" class="input-group-text black-text secondary-bg btn-outline-secondary"
-                :id="id">{{ labelValue }}</span>
-            <select class="form-select btn-outline-secondary admin-form-item" v-model="model" >
+            <label v-if="labelValue" :for="id" class="input-group-text black-text secondary-bg btn-outline-secondary"
+                >{{ labelValue }}</label>
+            <select class="form-select btn-outline-custom" v-model="model" :id="id" >
                 <option v-for="item in attribute?.data" 
                 :key="item[attribute?.valueMember??'']" 
                 :value="item[attribute?.valueMember??'key']">{{ item[attribute?.displayMember??'value'] }}</option>

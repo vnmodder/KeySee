@@ -1,6 +1,7 @@
 :root {
-  --main-bg-color: #009d63;
   --main-text-color: #009d63;
+  --main-bg-color: #009d63;
+  --main-bg-color-2: #34dc9e;
   --second-text-color: #bbbec5;
   --second-bg-color: #c1efde;
   --aa-bg-color: #e0eeea;
@@ -25,6 +26,10 @@
 
 #admin .primary-bg {
   background-color: var(--main-bg-color) ;
+}
+
+#admin .primary-bg-2 {
+  background-color: var(--main-bg-color-2) ;
 }
 
 #admin .secondary-bg {
@@ -91,12 +96,42 @@
   color: var(--main-text-color) !important;
 }
 
-#admin > .input-group > .admin-form-item:focus ,
-#admin > .input-group > .admin-form-item:hover{
-  color: var(--aa-bg-color) !important;
+#admin .btn-outline-custom {
+  border: 1px solid #000000 ;
+  color: var(--second-text-color)  ;
+  transition: background-color 0.3s ;
+
+  &:hover {
+    background-color: #abfbbe; 
+    border: 1px solid var(--main-bg-color);
+    color: #000000 ;
+    font-weight: 500;
+  }
 }
 
-@media (min-width: 768px) {
+#admin .btn-outline-custom-2 {
+  border: 1px solid #000000 ;
+  color: #5d5d5d;
+  transition: background-color 0.3s ;
+
+  &:hover {
+    background-color: #abfbbe; 
+    border: 1px solid var(--main-bg-color);
+    color: #000000 ;
+    font-weight: 500;
+  }
+}
+
+#admin .btn-outline-success {
+  /* background-color:var(--second-bg-color) !important ; */
+  background-color: white;
+  &:hover{
+    color: var(--main-bg-color-2);
+    font-weight: 800 !important;
+  }
+}
+
+@media (min-width: 850px) {
  #admin  #sidebar-wrapper {
     margin-left: 0;
   }

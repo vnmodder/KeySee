@@ -12,6 +12,9 @@ export enum ControlStyle{
     number,
     dateTime,
     checkbox,
+    radio,
     dropdown,
     button,
+    file,
+    label
 }

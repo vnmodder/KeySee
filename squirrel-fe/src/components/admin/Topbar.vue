@@ -18,9 +18,9 @@
                         <i class="fas fa-user me-2"></i>{{ user?.name }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" @click="logout" href="/login">Logout</a></li>
+                        <li><a class="dropdown-item" href="#">Thông tin</a></li>
+                        <li><a class="dropdown-item" href="#">Cài đặt</a></li>
+                        <li><a class="dropdown-item" @click="logout" href="/login">Đăng xuất</a></li>
                     </ul>
                 </li>
             </ul>
@@ -47,14 +47,12 @@ const logout = async () => {
 interface Props {
     menuToggleClick?: ()=> void,
     title?:string,
-    user?:any
 }
 
 
 withDefaults(defineProps<Props>(), {
     menuToggleClick: Function,
     title:"Dashboard",
-    user: undefined
 })
 
 </script>

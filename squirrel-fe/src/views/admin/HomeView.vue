@@ -1,5 +1,5 @@
 <template>
-    <SessionItem :label="'Table'">
+    <SessionItem :label="'Bảng điều khiển'">
         <Table :headers="config" :items="items"  />
     </SessionItem>
 </template>

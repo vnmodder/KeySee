@@ -1,7 +1,11 @@
 export { default as Table } from './TableCommon.vue';
 export { default as SessionItem } from './SessionItem.vue';
 export { default as GroupItem } from './GroupItem.vue';
+export { default as LabelItem } from './LabelItem.vue';
 export { default as InputItem } from './InputItem.vue';
+export { default as CheckboxItem } from './CheckboxItem.vue';
+export { default as RadioItem } from './RadioItem.vue';
 export { default as DropdownItem } from './DropdownItem.vue';
 export { default as DateTimeItem } from './DateTimeItem.vue';
+export { default as FileInputItem } from './FileInputItem.vue';
 export { default as ButtonItem } from './ButtonItem.vue';

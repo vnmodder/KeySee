@@ -5,7 +5,7 @@
         <div class="d-flex" id="wrapper" :class="menuToggle ? 'toggled' : ''">
             <LeftMenu :items="menuItems" />
             <div id="page-content-wrapper">
-                <Topbar :menuToggleClick="menuToggleClick" />
+                <Topbar :menuToggleClick="menuToggleClick" :title="headerTitle" />
                 <div class="container-fluid px-4 mt-3">
                     <RouterView />
                 </div>
@@ -24,12 +24,14 @@ const route = useRoute()
 const adminMenu = adminMenuStore()
 const {menuItems} = storeToRefs(adminMenu)
 const menuToggle = ref(false)
+const headerTitle = ref<string|undefined>('')
 
 const menuToggleClick = () => {
     menuToggle.value = !menuToggle.value
 }
 
 watch(route, (newRoute) => {
-  adminMenu.updateMenuState(newRoute.path);
+  adminMenu.updateMenuState(newRoute.path)
+  headerTitle.value = adminMenu.getTitle()
 }, { immediate: true });
 </script>

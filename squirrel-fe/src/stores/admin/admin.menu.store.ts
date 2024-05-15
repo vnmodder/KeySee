@@ -14,6 +14,9 @@ export const adminMenuStore =  defineStore({
             menuItems.forEach(x=>{
                 x.isAtive = path==x.href
             });
+        },
+        getTitle(){
+            return menuItems.find(x=>x.isAtive)?.name
         }
     }
 });

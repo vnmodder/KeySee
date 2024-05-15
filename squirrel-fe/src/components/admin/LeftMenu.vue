@@ -5,7 +5,7 @@
         <div v-if="items" class="list-group list-group-flush my-3">
             <a v-for="(item, index) in items" :key="index" :href="item.href ? item.href : '#'"
                 class="list-group-item list-group-item-action bg-transparent "
-                :class="item.isAtive ? 'acitve primary-text' : 'second-text text-bold'">
+                :class="item.isAtive ? 'acitve primary-text' : 'second-text text-bold'" @click="onClick(item.name)">
                 <i class="fas me-2" :class="item.icon ? item.icon : ''"></i>
                 {{ item.name }}
             </a>
@@ -18,6 +18,7 @@ import {defineProps} from 'vue'
 interface Props {
     items?: Array<MenuItem>,
     title?: string,
+    onClick?:(title: string|undefined)=>void
 }
 interface MenuItem {
     id: number,
@@ -30,6 +31,7 @@ interface MenuItem {
 withDefaults(defineProps<Props>(), {
     items: Array,
     title: 'Squrrel',
+    onClick:(title: string|undefined)=>{}
 })
 
 </script>

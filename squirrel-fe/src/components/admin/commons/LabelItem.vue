@@ -1,7 +1,6 @@
 <template>
-    <div class="mb-3" :class="colControl ? 'col-md-' + colControl : ''">
-        <button type="button" :id="id" class="btn btn-outline-success fw-bold col-12" @click="attribute?.onClick"
-        :class="className">{{ labelValue}}</button>
+    <div class="mb-3 d-flex align-items-center" :class="colControl ? 'col-md-' + colControl : ''">
+        <span :class="className" >{{labelValue}}</span> 
     </div>
 </template>
 
@@ -10,7 +9,6 @@ import { defineProps } from 'vue'
 import type { BaseAttribute } from './interface';
 
 interface Attribute {
-  onClick?:()=>void
 }
 
 interface Props extends BaseAttribute{
