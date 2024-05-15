@@ -21,11 +21,13 @@
             </tr>
         </tbody>
     </table>
+<TablePagination/>
 </template>
 
 <script setup lang="ts">
 import { ColumnStyle } from '@/enums/admin.enums';
 import {defineProps} from 'vue'
+import {TablePagination} from './'
 
 interface Props {
     headers?: Array<Header>,

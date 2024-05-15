@@ -21,7 +21,7 @@
                                 @click="handleLogin">Đăng nhập</button>
                         </div>
                         <p class=" mt-3 animated slideInDown">Quên mật khẩu?</p>
-                        <a class="animated slideInDown" href="/register">Chưa có tài khoản?</a>
+                        <RouterLink class="animated slideInDown" to="/register">Chưa có tài khoản?</RouterLink>
                     </div>
                 </div>
             </div>

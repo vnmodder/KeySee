@@ -13,6 +13,7 @@
                 <div class="navbar-nav ms-auto py-0">
                     <RouterLink class="nav-item nav-link active" to="/" >Trang chủ</RouterLink>
                     <RouterLink class="nav-item nav-link " to="/about" >Giới thiệu</RouterLink>
+                    <RouterLink class="nav-item nav-link " to="/admin" >AdminPage</RouterLink>
                     <div v-if="user" class="nav-item dropdown">
                         <div href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Chào: {{ user.name }}</div>
                         <div class="dropdown-menu m-0">

@@ -3,12 +3,12 @@
         <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                 class="fas fa-user-secret me-2"></i>{{ title }}</div>
         <div v-if="items" class="list-group list-group-flush my-3">
-            <a v-for="(item, index) in items" :key="index" :href="item.href ? item.href : '#'"
+            <RouterLink  v-for="(item, index) in items" :key="index" :to="item.href ? item.href : '#'"
                 class="list-group-item list-group-item-action bg-transparent "
                 :class="item.isAtive ? 'acitve primary-text' : 'second-text text-bold'" @click="onClick(item.name)">
                 <i class="fas me-2" :class="item.icon ? item.icon : ''"></i>
                 {{ item.name }}
-            </a>
+            </RouterLink>
         </div>
     </div>
 </template>

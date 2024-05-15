@@ -1,4 +1,5 @@
 export { default as Table } from './TableCommon.vue';
+export { default as TablePagination } from './TablePagination.vue';
 export { default as SessionItem } from './SessionItem.vue';
 export { default as GroupItem } from './GroupItem.vue';
 export { default as LabelItem } from './LabelItem.vue';
