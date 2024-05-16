@@ -2,7 +2,7 @@ import type {
   GroupItemConfig,
   ItemConfig,
 } from "@/components/admin/commons/interface";
-import { ControlStyle } from "@/enums/admin.enums";
+import { ControlStyle, GroupStyle } from "@/enums/admin.enums";
 import type { Ref } from "vue";
 
 export const getInputValue = (
@@ -12,7 +12,7 @@ export const getInputValue = (
 ): any => {
   if (groupId) {
     const group = config.find((x) => x.id == groupId);
-    if (group && group.groupStyle == "radio") {
+    if (group && group.groupStyle == GroupStyle.radio) {
       return group.groupValue;
     }
     return group?.groupItem?.find((x) => x.id == key)?.modelValue;
@@ -39,7 +39,7 @@ export const setInputValue = (
   if (groupId) {
     const group = config.value.find((x) => x.id == groupId);
     const item = group?.groupItem?.find((x) => x.id == key);
-    if (group && group.groupStyle == "radio") {
+    if (group && group.groupStyle == GroupStyle.radio) {
       group.groupValue = value;
     }
     if (item) item.modelValue = value;
@@ -47,7 +47,7 @@ export const setInputValue = (
   }
 
   for (const group of config.value) {
-    if (group.groupStyle == "radio") {
+    if (group.groupStyle == GroupStyle.radio) {
       group.groupValue = value;
       return;
     }

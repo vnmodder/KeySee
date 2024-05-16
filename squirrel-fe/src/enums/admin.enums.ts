@@ -18,3 +18,9 @@ export enum ControlStyle{
     file,
     label
 }
+
+export enum GroupStyle {
+    normal,
+    radio,
+    custom
+}

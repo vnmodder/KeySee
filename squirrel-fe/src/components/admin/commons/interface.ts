@@ -1,4 +1,4 @@
-import type { ControlStyle } from "@/enums/admin.enums"
+import type { ControlStyle, GroupStyle } from "@/enums/admin.enums"
 
 export interface BaseAttribute {
     id?: string
@@ -10,7 +10,7 @@ export interface BaseAttribute {
 
 export interface GroupItemConfig {
     id?: string | number,
-    groupStyle?: string,
+    groupStyle?: GroupStyle,
     groupItem?: Array<ItemConfig>
     groupValue?:any
 }

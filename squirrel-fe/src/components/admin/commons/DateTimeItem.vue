@@ -2,7 +2,7 @@
     <div class="mb-3" :class="colControl ? 'col-md-' + colControl : ''">
         <div class="input-group">
             <div class="form-control admin-datetime-picker">
-                <Datepicker v-model="model" :id="id" class="form-control btn-outline-custom" :inputFormat="'dd/MM/yyyy'" :typeable="true"  />
+                <Datepicker v-model="model" :locale="vi" :id="id" class="form-control btn-outline-custom" :inputFormat="'dd/MM/yyyy'" :typeable="true"  />
             </div>
         </div>
     </div>
