@@ -16,4 +16,13 @@ export const dumydata =  [
     { cot1: 'sadsadsa', cot2: 'sadsadad', cot3: 927792 },
     { cot1: 'sadsadsa', cot2: 'sadsadad', cot3: 927792 },
     { cot1: 'sadsadsa', cot2: 'sadsadad', cot3: 927792 },
+    { cot1: 'sadsadsa', cot2: 'sadsadad', cot3: 927792 },
+    { cot1: 'sadsadsa', cot2: 'sadsadad', cot3: 927792 },
+    { cot1: 'sadsadsa', cot2: 'sadsadad', cot3: 927792 },
+    { cot1: 'sadsadsa', cot2: 'sadsadad', cot3: 927792 },
+    { cot1: 'sadsadsa', cot2: 'sadsadad', cot3: 927792 },
+    { cot1: 'sadsadsa', cot2: 'sadsadad', cot3: 927792 },
+    { cot1: 'sadsadsa', cot2: 'sadsadad', cot3: 927792 },
+    { cot1: 'sadsadsa', cot2: 'sadsadad', cot3: 927792 },
+    { cot1: 'sadsadsa', cot2: 'sadsadad', cot3: 927792 },
 ]

@@ -11,6 +11,10 @@
                 @click="attribute?.onSearchClick && attribute.onSearchClick(model)" class="btn btn-outline-custom-2">
                 <i class="fas fa-search "></i>
             </button>
+            <button v-if="attribute && attribute?.showOption"
+                @click="attribute?.onOptionClick() && attribute.onOptionClick(model)" class="btn btn-outline-custom-2">
+                <i class="fas fa-cog "></i>
+            </button>
         </div>
     </div>
 </template>
@@ -23,7 +27,9 @@ interface Attribute {
     placeholder?: string
     showClear?: boolean
     showSearch?: boolean
+    showOption?:boolean
     onSearchClick?: (value: any | undefined) => void
+    onOptionClick?: (value: any | undefined) => void
 }
 
 interface Props extends BaseAttribute {

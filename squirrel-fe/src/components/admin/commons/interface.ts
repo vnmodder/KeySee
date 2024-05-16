@@ -1,4 +1,4 @@
-import type { ControlStyle, GroupStyle } from "@/enums/admin.enums"
+import type { ColumnStyle, ControlStyle, GroupStyle } from "@/enums/admin.enums"
 
 export interface BaseAttribute {
     id?: string
@@ -21,4 +21,12 @@ export interface ItemConfig extends BaseAttribute {
     modelValue?: any
     labelClassName?:string
     colLabel?:number
+}
+
+export interface HeaderTable {
+    id:string
+    name: string,
+    textAlign?: string,
+    fomatValue?: string
+    columnStyle?: ColumnStyle
 }

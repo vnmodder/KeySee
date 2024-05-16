@@ -141,8 +141,19 @@
   }
 }
 
-#admin .pagination .active {
-  font-weight: bold;
+#admin .pagination {
+  .page-link{
+    width: 2.7rem;
+    color: var(--main-text-color);
+  }
+  .active{
+    .page-link{
+      font-weight: bold;
+      border: 1px solid var(--second-bg-color);
+      background-color: var(--main-bg-color);
+      color: #FFFFFF;
+    }
+  }
 }
 
 #admin .btn-outline-success {
