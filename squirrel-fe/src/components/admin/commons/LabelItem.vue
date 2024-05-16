@@ -1,6 +1,7 @@
 <template>
-    <div class="mb-3 d-flex align-items-center" :class="colControl ? 'col-md-' + colControl : ''">
-        <span :class="className" >{{labelValue}}</span> 
+    <div v-if="colControl && colControl != 0" class="mb-3 d-flex align-items-center"
+        :class="colControl ? 'col-md-' + colControl : ''">
+        <span :class="className">{{ labelValue }}</span>
     </div>
 </template>
 
@@ -11,7 +12,7 @@ import type { BaseAttribute } from './interface';
 interface Attribute {
 }
 
-interface Props extends BaseAttribute{
+interface Props extends BaseAttribute {
     attribute?: Attribute
 }
 
@@ -19,6 +20,6 @@ withDefaults(defineProps<Props>(), {
     id: '',
     labelValue: '',
     colControl: 1,
-    attribute:undefined
+    attribute: undefined
 })
 </script>

@@ -1,7 +1,6 @@
 <template>
     <div class="mb-3" :class="colControl ? 'col-md-' + colControl : ''">
         <div class="input-group">
-            <label v-if="labelValue" :for="id" class="input-group-text  black-text secondary-bg btn-outline-secondary">{{labelValue }}</label>
             <div class="form-control admin-datetime-picker">
                 <Datepicker v-model="model" :id="id" class="form-control btn-outline-custom" :inputFormat="'dd/MM/yyyy'" :typeable="true"  />
             </div>
@@ -47,6 +46,4 @@ withDefaults(defineProps<Props>(), {
     background-color: transparent;
     border: none;
 }
-
-
 </style>

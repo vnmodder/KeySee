@@ -10,10 +10,17 @@
 <script setup lang="ts">
 import { SessionItem, GroupItem, Table } from '@/components/admin/commons'
 import { ColumnStyle, ControlStyle } from '@/enums/admin.enums'
+import { getInputValue, setInputValue } from '@/helpers/input.helper';
 import { ref } from 'vue'
 
 const btnSubmit = () => {
-    console.log('To do')
+
+    setInputValue(items, 'input10', 'input10')
+
+}
+
+const btnSubmit2 = () => {
+    console.log(getInputValue(items.value, 'input10'))
 }
 
 const btnSearch = (value: string | undefined) => {
@@ -37,7 +44,6 @@ const items = ref([
             },
             {
                 id: 'input2',
-                labelValue: 'Test 2',
                 colControl: 5,
                 controlStyle: ControlStyle.input,
                 attribute: {
@@ -55,6 +61,7 @@ const items = ref([
             {
                 id: 'input3',
                 labelValue: 'Test sadsada d 3',
+                colLabel:2,
                 colControl: 5,
                 controlStyle: ControlStyle.dropdown,
                 attribute: {
@@ -85,6 +92,16 @@ const items = ref([
                     onClick: btnSubmit
                 }
             },
+            {
+                id: 'input99',
+                labelValue: 'Mở2',
+                colControl: 1,
+                controlStyle: ControlStyle.button,
+                // className: 'text-danger',
+                attribute: {
+                    onClick: btnSubmit2
+                }
+            },
         ]
     },
     {
@@ -95,16 +112,6 @@ const items = ref([
                 labelValue: 'Test sadsada d 3',
                 colControl: 5,
                 controlStyle: ControlStyle.file,
-                attribute: {
-                    data: [
-                        { col: 1, col2: 'sdsadsa 2' },
-                        { col: 2, col2: 'sdsadsad 3' },
-                        { col: 3, col2: 'sdsadsa 3' },
-                    ],
-                    valueMember: 'col',
-                    displayMember: 'col2'
-                },
-                modelValue: 2
             },
             {
                 id: 'input7',
@@ -130,6 +137,7 @@ const items = ref([
                 labelValue: 'Check 1',
                 colControl: 2,
                 controlStyle: ControlStyle.checkbox,
+                modelValue:true
             },
             {
                 id: 'input9',
@@ -142,6 +150,7 @@ const items = ref([
     },
     {
         id: 5,
+        groupStyle:'radio',
         groupItem: [
         {
                 id: 'input0',
@@ -156,10 +165,35 @@ const items = ref([
                 colControl: 2,
                 name:'radioItem',
                 controlStyle: ControlStyle.radio,
+                modelValue:'input10'
             },
             {
                 id: 'input11',
                 labelValue: 'Radio 2',
+                colControl: 2,
+                name:'radioItem',
+                controlStyle: ControlStyle.radio,
+                className: 'text-danger',
+            },
+            {
+                id: 'input12',
+                labelValue: 'Radio 2',
+                colControl: 2,
+                name:'radioItem',
+                controlStyle: ControlStyle.radio,
+                className: 'text-danger',
+            },
+            {
+                id: 'input13',
+                labelValue: 'Radio ',
+                colControl: 2,
+                name:'radioItem',
+                controlStyle: ControlStyle.radio,
+                className: 'text-danger',
+            },
+            {
+                id: 'input14',
+                labelValue: 'Radio ',
                 colControl: 2,
                 name:'radioItem',
                 controlStyle: ControlStyle.radio,

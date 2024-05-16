@@ -1,8 +1,6 @@
 <template>
     <div class="mb-3" :class="colControl ? 'col-md-' + colControl : ''">
         <div class="input-group">
-            <label :for="id" v-if="labelValue" class="input-group-text black-text secondary-bg btn-outline-secondary">{{
-                labelValue }}</label>
             <input class="form-control btn-outline-custom" type="text" v-model="model" :id="id"
                 :placeholder="attribute && attribute?.placeholder" aria-label="Input"
                 aria-describedby="'inputGroup-sizing-'+id" />

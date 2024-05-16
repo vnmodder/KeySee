@@ -8,32 +8,31 @@
 }
 
 #admin .primary-text {
-  color: var(--main-text-color) ;
+  color: var(--main-text-color);
 }
 
 #admin .a-text {
-  color: var(--second-bg-color) ;
+  color: var(--second-bg-color);
 }
 
 #admin .second-text {
-  color: var(--second-text-color) ;
+  color: var(--second-text-color);
 }
 
 #admin .black-text {
-  color: #000000 ;
+  color: #000000;
 }
 
-
 #admin .primary-bg {
-  background-color: var(--main-bg-color) ;
+  background-color: var(--main-bg-color);
 }
 
 #admin .primary-bg-2 {
-  background-color: var(--main-bg-color-2) ;
+  background-color: var(--main-bg-color-2);
 }
 
 #admin .secondary-bg {
-  background-color: var(--second-bg-color) ;
+  background-color: var(--second-bg-color);
 }
 
 #admin .rounded-full {
@@ -92,47 +91,71 @@
   font-weight: 800;
 }
 
-#admin .active{
+#admin .active {
   color: var(--main-text-color) !important;
 }
 
 #admin .btn-outline-custom {
-  border: 1px solid #000000 ;
-  color: var(--second-text-color)  ;
-  transition: background-color 0.3s ;
+  border: 1px solid #000000;
+  color: var(--second-text-color);
+  transition: background-color 0.3s;
 
   &:hover {
-    background-color: #abfbbe; 
+    background-color: #abfbbe;
     border: 1px solid var(--main-bg-color);
-    color: #000000 ;
+    color: #000000;
     font-weight: 500;
   }
 }
 
+#admin .admin-file-control {
+  .btn-outline-custom-2 {
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+  }
+}
+
+#admin .admin-input-group{
+  
+  input[type='checkbox']{
+    border-top-right-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+  }
+
+  input[type='radio']{
+    border-top-right-radius: 0.5rem !important;
+    border-bottom-right-radius: 0.5rem !important;
+  }
+}
+
 #admin .btn-outline-custom-2 {
-  border: 1px solid #000000 ;
+  border: 1px solid #000000;
   color: #5d5d5d;
-  transition: background-color 0.3s ;
+  transition: background-color 0.3s;
 
   &:hover {
-    background-color: #abfbbe; 
+    background-color: #abfbbe;
     border: 1px solid var(--main-bg-color);
-    color: #000000 ;
+    color: #000000;
     font-weight: 500;
   }
+}
+
+#admin .pagination .active {
+  font-weight: bold;
 }
 
 #admin .btn-outline-success {
   /* background-color:var(--second-bg-color) !important ; */
   background-color: white;
-  &:hover{
+  &:hover {
     color: var(--main-bg-color-2);
     font-weight: 800 !important;
   }
 }
 
 @media (min-width: 850px) {
- #admin  #sidebar-wrapper {
+  #admin #sidebar-wrapper {
     margin-left: 0;
   }
 
@@ -141,7 +164,7 @@
     width: 100%;
   }
 
- #admin  #wrapper.toggled #sidebar-wrapper {
+  #admin #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem;
   }
 }

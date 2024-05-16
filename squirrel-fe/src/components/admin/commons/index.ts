@@ -10,3 +10,4 @@ export { default as DropdownItem } from './DropdownItem.vue';
 export { default as DateTimeItem } from './DateTimeItem.vue';
 export { default as FileInputItem } from './FileInputItem.vue';
 export { default as ButtonItem } from './ButtonItem.vue';
+export { default as BaseInputItem } from './BaseInputItem.vue';
