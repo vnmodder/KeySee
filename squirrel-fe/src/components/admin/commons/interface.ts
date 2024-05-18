@@ -23,10 +23,25 @@ export interface ItemConfig extends BaseAttribute {
     colLabel?:number
 }
 
+
 export interface HeaderTable {
     id:string
     name: string,
     textAlign?: string,
     fomatValue?: string
     columnStyle?: ColumnStyle
+    hidden?: boolean
+}
+interface HeaderTableOption{
+    showDel: boolean
+    showEdit: boolean
+    showDetail: boolean
+    delClick: (row: any)=> void
+    editClick: (row: any)=> void
+    detailClick: (row: any)=> void
+}
+
+export interface TableConfig{
+    headers: Array<HeaderTable>
+    options:HeaderTableOption
 }

@@ -4,10 +4,10 @@
             <input class="form-control btn-outline-custom" type="text" v-model="model" :id="id"
                 :placeholder="attribute && attribute?.placeholder" aria-label="Input"
                 aria-describedby="'inputGroup-sizing-'+id" />
-            <button v-if="attribute && attribute?.showClear" @click="clear" class="btn btn-outline-custom-2">
+            <button v-if="model && attribute && attribute?.showClear" @click="clear" class="btn btn-outline-custom-2">
                 <i class="fas fa-times "></i>
             </button>
-            <button v-if="attribute && attribute?.showSearch"
+            <button v-if="model && attribute && attribute?.showSearch"
                 @click="attribute?.onSearchClick && attribute.onSearchClick(model)" class="btn btn-outline-custom-2">
                 <i class="fas fa-search "></i>
             </button>
@@ -27,7 +27,7 @@ interface Attribute {
     placeholder?: string
     showClear?: boolean
     showSearch?: boolean
-    showOption?:boolean
+    showOption?: boolean
     onSearchClick?: (value: any | undefined) => void
     onOptionClick?: (value: any | undefined) => void
 }

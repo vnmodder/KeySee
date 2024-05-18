@@ -1,6 +1,6 @@
 <template>
     <div class="row d-flex">
-        <h1 v-if="label" class="fs-4 mb-3 primary-text fw-bold col-md-6">{{ label }}</h1>
+        <h1 v-if="title" class="fs-4 mb-3 primary-text fw-bold col-md-6">{{ title }}</h1>
         <div class="col-md-6 d-flex justify-content-end">
             <button v-if="showSearch" class="btn primary-bg  mb-1 ms-1 fw-bold text-white col-md-2">Tìm kím</button>
         </div>
@@ -14,11 +14,11 @@
 import { defineProps } from 'vue'
 
 interface Props {
-    label?: string
+    title?: string
     showSearch?:boolean
 }
 withDefaults(defineProps<Props>(), {
-    label: '',
+    title: '',
     showSearch: false
 })
 </script>

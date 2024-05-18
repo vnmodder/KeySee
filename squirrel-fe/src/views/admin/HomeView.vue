@@ -224,9 +224,10 @@
         },
       ],
     },
-  ]);
+  ])
   
-  const config = [
+  const config = {
+    headers: [
     {
       id: "cot1",
       name: "Cột 1",
@@ -245,6 +246,6 @@
       textAlign: "end",
       columnStyle: ColumnStyle.number,
     },
-  ];
+  ]}
   </script>
   

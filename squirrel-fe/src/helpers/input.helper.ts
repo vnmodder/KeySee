@@ -17,7 +17,6 @@ export const getInputValue = (
     }
     return group?.groupItem?.find((x) => x.id == key)?.modelValue;
   }
-
   for (const group of config) {
     const groupItem = group.groupItem?.find((x) => x.id == key);
     if (groupItem) {

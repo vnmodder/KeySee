@@ -1,5 +1,5 @@
 <template>
-  <slot :config="config" :items="displayedData" ></slot>
+  <slot :config="config" :items="displayedData" :options="options" ></slot>
   <nav v-if="visiblePages.length > 1" class="d-flex justify-content-end">
     <ul class="pagination d-flex align-items-center">
       <span class="me-2"
@@ -51,8 +51,9 @@ import type { HeaderTable } from "./interface";
 
 interface Props {
   dataItems?: Array<any>;
-  pageSize: number;
-  config?: Array<HeaderTable>;
+  pageSize?: number;
+  config?: any;
+  options?: any
   totalPagesToShow?: number;
 }
 
