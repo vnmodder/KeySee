@@ -1,4 +1,6 @@
-git checkout main
+
+call git pull
+call git checkout main
 cd squirrel-fe
 call npm -g install
 call npm run build
