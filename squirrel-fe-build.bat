@@ -1,5 +1,5 @@
 
-call git pull
+call git pull origin main
 call git checkout main
 cd squirrel-fe
 call npm -g install
