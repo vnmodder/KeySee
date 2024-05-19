@@ -1,6 +1,6 @@
 
-call git pull origin main
-call git checkout main
+ git pull origin main
+ git checkout main
 cd squirrel-fe
 call npm -g install
 call npm run build
@@ -14,3 +14,4 @@ for /f %%d in ('dir /ad /b C:\Host\Squirrel\squirrel.io.vn') do (
 )
 
 robocopy dist C:\Host\Squirrel\squirrel.io.vn\ /E
+exit 0 
