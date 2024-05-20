@@ -27,8 +27,6 @@ const categoryItem = {
   imgUrl: undefined
 }
 
-// test
-//hjkashdasjk dhsajd kahdsajk
 const btnAddCategory = async () => {
   const payload = {
     ...categoryItem,
