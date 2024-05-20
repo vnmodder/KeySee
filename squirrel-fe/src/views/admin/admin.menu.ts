@@ -15,6 +15,13 @@ export const  menuItems = [
     },
     {
         id: 3,
+        name: 'Khóa học',
+        href: '/admin/course',
+        icon: 'fa-tachometer-alt',
+        isAtive: false
+    },
+    {
+        id: 99,
         name: 'Giới thiệu',
         href: '/admin/about',
         icon: 'fa-paperclip',

@@ -18,7 +18,7 @@ import { categoryApi } from '@/api/admin'
 import { ColumnStyle, ControlStyle } from '@/enums/admin.enums';
 import { getInputValue } from '@/helpers/input.helper';
 
-const items = ref();
+const items = ref([]);
 
 const categoryItem = {
   id: undefined,
@@ -97,8 +97,6 @@ const tableConfig = {
     },
   ]
 }
-
-
 
 const layoutConfig = ref([
   {
