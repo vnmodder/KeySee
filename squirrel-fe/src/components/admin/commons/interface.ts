@@ -31,6 +31,7 @@ export interface HeaderTable {
     fomatValue?: string
     columnStyle?: ColumnStyle
     hidden?: boolean
+    className?: string
 }
 interface HeaderTableOption{
     showDel: boolean

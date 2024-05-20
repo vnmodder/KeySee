@@ -28,6 +28,7 @@ const categoryItem = {
 }
 
 // test
+//hjkashdasjk dhsajd kahdsajk
 const btnAddCategory = async () => {
   const payload = {
     ...categoryItem,
@@ -50,6 +51,7 @@ const btnAddCategory = async () => {
 const fetchData = async () => {
   const response = await categoryApi.getAllCategory();
   if (response.data.result.isSuccess) {
+    console.log(response.data.result.categorie)
     items.value = response.data.result.categories;
   }
   else {
@@ -77,6 +79,8 @@ const tableConfig = {
       id: "id",
       name: "Mã danh mục",
       columnStyle: ColumnStyle.text,
+      textAlign: 'center',
+      className: 'text-danger'
     },
     {
       id: "name",

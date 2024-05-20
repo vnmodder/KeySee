@@ -13,7 +13,7 @@
             </button>
             <button v-if="attribute && attribute?.showOption"
                 @click="attribute?.onOptionClick && attribute.onOptionClick(model)" class="btn btn-outline-custom-2">
-                <i class="fas fa-cog "></i>
+                <i class="fas fa-cog " ></i>
             </button>
         </div>
     </div>
