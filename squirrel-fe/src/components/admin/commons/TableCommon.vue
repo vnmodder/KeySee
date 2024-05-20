@@ -15,7 +15,7 @@
                 @click="rowSlected(row)">
                 <template v-for="(h, index) in config?.headers" :key="index">
                     <td v-if="!h.hidden" :class="[
-                        h.textAlign ? 'text-' + h.textAlign : 'text-left']">
+                        h.textAlign ? 'text-' + h.textAlign : 'text-left', h.className]">
                         <span v-if="h.columnStyle == ColumnStyle.text || !h.columnStyle">
                             {{ row[h.id] }}
                         </span>
