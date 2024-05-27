@@ -1,5 +1,5 @@
 <template>
-  <slot :config="config" :items="displayedData" :options="options" ></slot>
+  <slot :config="config" :items="displayedData" :options="options" :startIndex="startIndex" ></slot>
   <nav v-if="visiblePages.length > 1" class="d-flex justify-content-end">
     <ul class="pagination d-flex align-items-center">
       <span class="me-2"

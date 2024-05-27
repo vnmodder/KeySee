@@ -37,12 +37,15 @@ interface HeaderTableOption{
     showDel: boolean
     showEdit: boolean
     showDetail: boolean
+    showRowHeader:boolean
     delClick: (row: any)=> void
     editClick: (row: any)=> void
     detailClick: (row: any)=> void
+    rowSlected: (row: any, index: number) => void,
 }
 
 export interface TableConfig{
     headers: Array<HeaderTable>
     options:HeaderTableOption
+
 }

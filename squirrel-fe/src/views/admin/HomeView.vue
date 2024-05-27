@@ -5,8 +5,8 @@
     </SessionItem>
     <SessionItem :label="'Bảng dữ liệu'">
       <PaginationPage :config="config" :dataItems="dumydata" :pageSize="8" >
-        <template v-slot="{ config, items }">
-          <Table  :config="config" :items="items"/>
+        <template v-slot="{ config, items , startIndex}">
+          <Table  :config="config" :items="items" :startIndex="startIndex"/>
         </template>
       </PaginationPage>
     </SessionItem>
@@ -246,6 +246,16 @@
       textAlign: "end",
       columnStyle: ColumnStyle.number,
     },
-  ]}
+  ],
+  options:{
+    showRowHeader:true,
+    rowSlected:(r: any,a: number)=> aaaaa(r,a)
+  }
+}
+
+const aaaaa = (r: any, i:number)=>{
+console.log('row', r);
+console.log('index', i);
+}
   </script>
   
