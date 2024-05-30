@@ -32,6 +32,8 @@ export interface HeaderTable {
     columnStyle?: ColumnStyle
     hidden?: boolean
     className?: string
+    width?:number
+    data?:Array<any>
 }
 interface HeaderTableOption{
     showDel: boolean
@@ -43,6 +45,7 @@ interface HeaderTableOption{
     detailClick: (row: any)=> void
     rowSlected: (row: any, index: number) => void,
 }
+
 
 export interface TableConfig{
     headers: Array<HeaderTable>

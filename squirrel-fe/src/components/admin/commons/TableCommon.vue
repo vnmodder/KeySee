@@ -14,26 +14,36 @@
         <tbody v-if="items?.length">
             <tr v-for="(row, index1) in items" :key="index1" :class="index1 % 2 == 1 ? 'event' : ''"
                 @click="config.options?.rowSlected(row, index1 + startIndex)">
-                <td  class="text-center" scope="row" v-if="config.options?.showRowHeader">{{ index1 + startIndex + 1 }}</td>
+                <td class="text-center" scope="row" v-if="config.options?.showRowHeader">{{ index1 + startIndex + 1 }}
+                </td>
                 <template v-for="(h, index) in config?.headers" :key="index">
                     <td v-if="!h.hidden" :class="[
-                        h.textAlign ? 'text-' + h.textAlign : 'text-left', h.className]">
+                        h.textAlign ? 'text-' + h.textAlign : 'text-left', h.className]" :width=" h.width" >
                         <span v-if="h.columnStyle == ColumnStyle.text || !h.columnStyle">
                             {{ row[h.id] }}
                         </span>
                         <span v-if="h.columnStyle == ColumnStyle.number">
                             {{ new Intl.NumberFormat('vi-VN').format(row[h.id]) }}
                         </span>
+                        <span v-if="h.columnStyle == ColumnStyle.checkbox">
+                            <input type="checkbox" v-model="row[h.id]" />
+                        </span>
+                        <span v-if="h.columnStyle == ColumnStyle.dropdown">
+                            <select v-model="row[h.id]" class="form-select" >
+                                <option v-for="item in h.data" :key="item['key']" :value="item['key']">{{ item['value']
+                                    }}</option>
+                            </select>
+                        </span>
                     </td>
                 </template>
                 <td v-if="config.options?.showDel || config.options?.showEdit || config.options?.showDetail"
-                :style="'text-align: center; cursor: pointer'"> 
-                    <i v-if="config.options?.showDetail" class="fas fa-eye primary-text" 
-                    @click="config.options?.detailClick(row)"></i>
-                    <i v-if="config.options?.showEdit"  class="fas fa-pen ms-2" 
-                    @click="config.options?.editClick(row)"></i>
-                    <i v-if="config.options?.showDel" class="fas fa-trash ms-2 text-danger" 
-                    @click="config.options?.delClick(row)"></i>
+                    :style="'text-align: center; cursor: pointer'">
+                    <i v-if="config.options?.showDetail" class="fas fa-eye primary-text"
+                        @click="config.options?.detailClick(row)"></i>
+                    <i v-if="config.options?.showEdit" class="fas fa-pen ms-2"
+                        @click="config.options?.editClick(row)"></i>
+                    <i v-if="config.options?.showDel" class="fas fa-trash ms-2 text-danger"
+                        @click="config.options?.delClick(row)"></i>
                 </td>
             </tr>
         </tbody>
@@ -43,12 +53,12 @@
 <script setup lang="ts">
 import { ColumnStyle } from '@/enums/admin.enums';
 import { defineProps, ref } from 'vue'
-import type {TableConfig } from './interface';
+import type { TableConfig } from './interface';
 
 interface Props {
     config?: TableConfig,
     items?: Array<any>,
-    startIndex?:number  
+    startIndex?: number
 }
 
 
