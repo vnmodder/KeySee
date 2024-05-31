@@ -1,10 +1,17 @@
 <template>
     <table v-if="config && config?.headers?.length" class="table bg-white rounded shadow-sm table-hover">
         <thead>
-            <tr class="primary-bg  text-white">
+            <tr class="primary-bg  text-white ">
                 <th scope="col" width="50" class="text-center" v-if="config.options?.showRowHeader">#</th>
                 <template v-for="h in config?.headers" :key="h.name">
-                    <th class="text-center" v-if="!h.hidden" scope="col">{{ h.name }}</th>
+                    <th class="text-center" v-if="!h.hidden" scope="col">
+                        <span>
+                            {{ h.name }}
+                        </span>
+                        <div class="row" v-if="h.columnStyle == ColumnStyle.checkbox && h.attribute?.showCheckAll">
+                            <input type="checkbox" @change="(e)=>checkAllChanged(e,h)" />
+                        </div>
+                    </th>
                 </template>
                 <th class="text-center"
                     v-if="config.options?.showDel || config.options?.showEdit || config.options?.showDetail"
@@ -18,7 +25,7 @@
                 </td>
                 <template v-for="(h, index) in config?.headers" :key="index">
                     <td v-if="!h.hidden" :class="[
-                        h.textAlign ? 'text-' + h.textAlign : 'text-left', h.className]" :width=" h.width" >
+                        h.textAlign ? 'text-' + h.textAlign : 'text-left', h.className]" :width="h.width">
                         <span v-if="h.columnStyle == ColumnStyle.text || !h.columnStyle">
                             {{ row[h.id] }}
                         </span>
@@ -28,9 +35,11 @@
                         <span v-if="h.columnStyle == ColumnStyle.checkbox">
                             <input type="checkbox" v-model="row[h.id]" />
                         </span>
-                        <span v-if="h.columnStyle == ColumnStyle.dropdown">
-                            <select v-model="row[h.id]" class="form-select" >
-                                <option v-for="item in h.data" :key="item['key']" :value="item['key']">{{ item['value']
+                        <span v-if="h.columnStyle == ColumnStyle.dropdown && h.attribute?.data">
+                            <select v-model="row[h.id]" class="form-select">
+                                <option v-for="item in h.attribute?.data" :key="item[h.attribute?.valueMember ?? 'key']"
+                                    :value="item[h.attribute?.valueMember ?? 'key']">{{ item[
+                                        h.attribute?.displayMember ?? 'value']
                                     }}</option>
                             </select>
                         </span>
@@ -53,7 +62,7 @@
 <script setup lang="ts">
 import { ColumnStyle } from '@/enums/admin.enums';
 import { defineProps, ref } from 'vue'
-import type { TableConfig } from './interface';
+import type { TableConfig, HeaderTable } from './interface';
 
 interface Props {
     config?: TableConfig,
@@ -66,4 +75,10 @@ withDefaults(defineProps<Props>(), {
     startIndex: 0,
 })
 
+const checkAllChanged = (event: Event, header: HeaderTable) => {
+    if (event.target instanceof HTMLInputElement
+        && header.attribute?.checkAllChanged) {
+        header.attribute?.checkAllChanged(event.target.checked)
+    }
+}
 </script>

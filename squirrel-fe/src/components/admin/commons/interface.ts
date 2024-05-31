@@ -27,14 +27,23 @@ export interface ItemConfig extends BaseAttribute {
 export interface HeaderTable {
     id:string
     name: string,
-    textAlign?: string,
+    textAlign?: string
     fomatValue?: string
     columnStyle?: ColumnStyle
     hidden?: boolean
     className?: string
     width?:number
-    data?:Array<any>
+    attribute?:HeaderColumn
 }
+
+interface HeaderColumn {
+    data?:Array<any>
+    displayMember?:string
+    valueMember?:string
+    showCheckAll?:boolean
+    checkAllChanged?:(isChecked: boolean)=>void
+}
+
 interface HeaderTableOption{
     showDel: boolean
     showEdit: boolean

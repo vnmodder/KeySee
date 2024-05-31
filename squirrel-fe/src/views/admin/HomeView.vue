@@ -1,9 +1,9 @@
 <template>
-  <SessionItem :label="'Danh mục dsad asd asd sa dsa đáa'">
+  <SessionItem :title="'Danh mục dsad asd asd sa dsa đáa'">
     <GroupItem :config="items" />
   </SessionItem>
-  <SessionItem :label="'Bảng dữ liệu'">
-    <PaginationPage :config="config" :dataItems="dumydata" :pageSize="8">
+  <SessionItem :title="'Bảng dữ liệu'">
+    <PaginationPage :config="config" :dataItems="tableData" :pageSize="8">
       <template v-slot="{ config, items, startIndex }">
         <Table :config="config" :items="items" :startIndex="startIndex" />
       </template>
@@ -21,7 +21,9 @@ import {
 import { ColumnStyle, ControlStyle, GroupStyle } from "@/enums/admin.enums";
 import { getInputValue, setInputValue } from "@/helpers/input.helper";
 import { dumydata } from "./dumydata.admin";
-import { ref } from "vue";
+import { ref, reactive } from "vue";
+
+const tableData = reactive(dumydata)
 
 const btnSubmit = () => {
   setInputValue(items, "input10", "input10");
@@ -38,6 +40,12 @@ const btnSubmit2 = () => {
 const btnSearch = (value: string | undefined) => {
   console.log(value);
 };
+
+const checkAllChanged = (checked: boolean) => {
+  tableData.forEach(x => {
+    x.cot4 = checked
+  });
+}
 
 const items = ref([
   {
@@ -252,15 +260,27 @@ const config = {
       columnStyle: ColumnStyle.checkbox,
     },
     {
+      id: "cot4",
+      name: "Cột 6",
+      textAlign: "center",
+      columnStyle: ColumnStyle.checkbox,
+      attribute: {
+        showCheckAll: true,
+        checkAllChanged: checkAllChanged
+      }
+    },
+    {
       id: "cot5",
       name: "Cột 5",
       columnStyle: ColumnStyle.dropdown,
       width: 200,
-      data: [
-        { key: 1, value: 'Một' },
-        { key: 2, value: 'Hai' },
-        { key: 3, value: 'Ba' },
-      ]
+      attribute: {
+        data: [
+          { key: 1, value: 'Một' },
+          { key: 2, value: 'Hai' },
+          { key: 3, value: 'Ba' },
+        ]
+      }
     },
   ],
   options: {
