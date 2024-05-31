@@ -61,3 +61,11 @@ export interface TableConfig{
     options:HeaderTableOption
 
 }
+
+export interface MenuItem {
+    id: number,
+    name?: string,
+    href?: string,
+    icon?: string,
+    isAtive: boolean,
+}

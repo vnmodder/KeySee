@@ -7,7 +7,7 @@ export const  menuItems = [
         isAtive: true
     },
     {
-        id: 1,
+        id: 2,
         name: 'Danh mục',
         href: '/admin/category',
         icon: 'fa-tachometer-alt',

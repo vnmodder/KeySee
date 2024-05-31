@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <div id="admin">
         <div class="d-flex" id="wrapper" :class="menuToggle ? 'toggled' : ''">
-            <LeftMenu :items="menuItems" />
+            <LeftMenu :items="menuItem" :onClick="onClick" />
             <div id="page-content-wrapper">
                 <Topbar :menuToggleClick="menuToggleClick" :title="headerTitle" />
                 <div class="container-fluid px-4 mt-3">
@@ -15,23 +15,31 @@
 </template>
 <script setup lang="ts">
 import { LeftMenu, PageFooter, Topbar } from '@/components/admin'
-import { ref,watch  } from 'vue'
-import { adminMenuStore} from '@/stores/admin/admin.menu.store'
-import {storeToRefs} from 'pinia'
+import { reactive, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { menuItems } from '@/views/admin/admin.menu'
+import type { MenuItem } from '@/components/admin/commons/interface'
 const route = useRoute()
 
-const adminMenu = adminMenuStore()
-const {menuItems} = storeToRefs(adminMenu)
+const menuItem = reactive(menuItems)
 const menuToggle = ref(false)
-const headerTitle = ref<string|undefined>('')
+const headerTitle = ref<string | undefined>('')
 
 const menuToggleClick = () => {
     menuToggle.value = !menuToggle.value
 }
 
+const onClick = (item: MenuItem) => {
+    menuItem.forEach(x => {
+        x.isAtive = item.id == x.id
+    });
+    headerTitle.value = menuItem.find(x => x.isAtive)?.name
+}
+
 watch(route, (newRoute) => {
-  adminMenu.updateMenuState(newRoute.path)
-  headerTitle.value = adminMenu.getTitle()
+    menuItem.forEach(x => {
+        x.isAtive = newRoute.path == x.href || newRoute.path == x.href +'/'
+    });
+    headerTitle.value = menuItem.find(x => x.isAtive)?.name
 }, { immediate: true });
 </script>
