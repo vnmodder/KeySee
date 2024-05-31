@@ -61,8 +61,6 @@ interface Props {
     startIndex?: number
 }
 
-
-
 withDefaults(defineProps<Props>(), {
     items: undefined,
     startIndex: 0,
