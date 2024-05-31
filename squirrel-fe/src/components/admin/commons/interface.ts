@@ -23,7 +23,6 @@ export interface ItemConfig extends BaseAttribute {
     colLabel?:number
 }
 
-
 export interface HeaderTable {
     id:string
     name: string,
