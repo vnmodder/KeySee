@@ -5,6 +5,7 @@ export enum ColumnStyle{
     checkbox,
     dropdown,
     button,
+    link
 }
 
 export enum ControlStyle{

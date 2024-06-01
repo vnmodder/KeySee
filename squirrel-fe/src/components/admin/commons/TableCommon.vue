@@ -4,21 +4,23 @@
             <tr class="primary-bg  text-white ">
                 <th width="50" class="text-center align-middle" v-if="config.options?.showRowHeader">#</th>
                 <template v-for="h in config?.headers" :key="h.name">
-                    <th class="text-center align-middle" v-if="!h.hidden" >
+                    <th class="text-center align-middle" v-if="!h.hidden">
                         <div class="row " v-if="h.columnStyle == ColumnStyle.checkbox && h.attribute?.showCheckAll">
-                            <input type="checkbox" @change="(e)=>checkAllChanged(e,h)" />
+                            <input type="checkbox" @change="(e) => checkAllChanged(e, h)" />
                         </div>
                         {{ h.name }}
                     </th>
                 </template>
                 <th class="text-center align-middle"
-                    v-if="config.options?.showDel || config.options?.showEdit || config.options?.showDetail">Tùy chỉnh</th>
+                    v-if="config.options?.showDel || config.options?.showEdit || config.options?.showDetail">Tùy chỉnh
+                </th>
             </tr>
         </thead>
         <tbody v-if="items?.length">
             <tr v-for="(row, index1) in items" :key="index1" :class="index1 % 2 == 1 ? 'event' : ''"
-                @click="config.options?.rowSlected(row, index1 + startIndex)">
-                <td class="text-center align-middle" v-if="config.options?.showRowHeader">{{ index1 + startIndex + 1 }}
+                @click="rowSlected(row, index1)">
+                <td class="text-center align-middle" v-if="config.options?.showRowHeader">{{ index1 + (startIndex ?? 0) +
+                    1 }}
                 </td>
                 <template v-for="(h, index) in config?.headers" :key="index">
                     <td v-if="!h.hidden" class="align-middle" :class="[
@@ -44,12 +46,9 @@
                 </template>
                 <td v-if="config.options?.showDel || config.options?.showEdit || config.options?.showDetail"
                     :style="'text-align: center; cursor: pointer'" class="align-middle">
-                    <i v-if="config.options?.showDetail" class="fas fa-eye primary-text"
-                        @click="config.options?.detailClick(row)"></i>
-                    <i v-if="config.options?.showEdit" class="fas fa-pen ms-2"
-                        @click="config.options?.editClick(row)"></i>
-                    <i v-if="config.options?.showDel" class="fas fa-trash ms-2 text-danger"
-                        @click="config.options?.delClick(row)"></i>
+                    <i v-if="config.options?.showDetail" class="fas fa-eye primary-text" @click="detailClick(row)"></i>
+                    <i v-if="config.options?.showEdit" class="fas fa-pen ms-2" @click="editClick(row)"></i>
+                    <i v-if="config.options?.showDel" class="fas fa-trash ms-2 text-danger" @click="delClick(row)"></i>
                 </td>
             </tr>
         </tbody>
@@ -66,11 +65,27 @@ interface Props {
     items?: Array<any>,
     startIndex?: number
 }
+const props = defineProps<Props>()
 
-withDefaults(defineProps<Props>(), {
-    items: undefined,
-    startIndex: 0,
-})
+const rowSlected = (row: any, index: number) => {
+    if (props.config?.options?.rowSlected)
+        props.config.options?.rowSlected(row, index + (props.startIndex ?? 0))
+}
+
+const detailClick = (row: any) => {
+    if (props.config?.options?.detailClick)
+        props.config.options?.detailClick(row)
+}
+
+const delClick = (row: any) => {
+    if (props.config?.options?.delClick)
+        props.config.options?.delClick(row)
+}
+
+const editClick = (row: any) => {
+    if (props.config?.options?.editClick)
+        props.config.options?.editClick(row)
+}
 
 const checkAllChanged = (event: Event, header: HeaderTable) => {
     if (event.target instanceof HTMLInputElement

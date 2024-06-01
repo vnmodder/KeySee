@@ -12,3 +12,5 @@ export { default as FileInputItem } from './FileInputItem.vue';
 export { default as ButtonItem } from './ButtonItem.vue';
 export { default as BaseInputItem } from './BaseInputItem.vue';
 export { default as TreeView } from './TreeView.vue';
+export { default as TreeTable } from './TreeTable.vue';
+export { default as TreeTableItem } from './TreeTableItem.vue';

@@ -23,7 +23,6 @@ export interface ItemConfig extends BaseAttribute {
     colLabel?:number
 }
 
-
 export interface HeaderTable {
     id:string
     name: string,
@@ -45,20 +44,20 @@ interface HeaderColumn {
 }
 
 interface HeaderTableOption{
-    showDel: boolean
-    showEdit: boolean
-    showDetail: boolean
-    showRowHeader:boolean
-    delClick: (row: any)=> void
-    editClick: (row: any)=> void
-    detailClick: (row: any)=> void
-    rowSlected: (row: any, index: number) => void,
+    showDel?: boolean
+    showEdit?: boolean
+    showDetail?: boolean
+    showRowHeader?:boolean
+    delClick?: (row: any)=> void
+    editClick?: (row: any)=> void
+    detailClick?: (row: any)=> void
+    rowSlected?: (row: any, index: number) => void,
 }
 
 
 export interface TableConfig{
     headers: Array<HeaderTable>
-    options:HeaderTableOption
+    options?: HeaderTableOption
 
 }
 
