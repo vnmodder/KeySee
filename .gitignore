@@ -12,3 +12,4 @@ squirrel-be/.cr
 squirrel-be/Squirrel.Presentation/Files/Logs/SquirrelDbContextSqlCommandLog.txt
 squirrel-be/Squirrel.Presentation/SquirrelProjectLogs/logs.log
 squirrel-admin/.vscode
+squirrel-fe/.vs

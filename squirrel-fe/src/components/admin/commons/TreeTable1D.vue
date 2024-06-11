@@ -13,7 +13,7 @@
                 checkChanged(
                   e,
                   config?.options?.checkMember ?? 'checkMember',
-                  nodes
+                  treeData
                 )
             "
           />
@@ -40,25 +40,53 @@
       </tr>
     </thead>
     <tbody>
-      <TreeTableItem :nodes="nodes" :depth="0" :config="config" />
+      <TreeTable1DItem :nodes="treeData" :depth="0" :config="config" />
     </tbody>
   </table>
 </template>
 
 <script setup lang="ts">
-import { TreeTableItem } from "./";
+import { ref } from "vue";
+import { TreeTable1DItem } from "./";
 import type { TableConfig } from "./interface";
 
 interface Node {
-  data: any;
+  id: number;
+  parent: number;
   children?: Node[];
+  [key: string]: any;
 }
 
 interface Props {
   config?: TableConfig;
   nodes?: Node[];
 }
-defineProps<Props>();
+const props = defineProps<Props>();
+
+const buildTree = (data: Node[]): Node[] => {
+  const map = new Map<number, Node>();
+  const roots: Node[] = [];
+
+  data.forEach((item) => {
+    item.children = [];
+    map.set(item.id, item);
+  });
+
+  data.forEach((item) => {
+    if (item.parent === 0) {
+      roots.push(item);
+    } else {
+      const parent = map.get(item.parent);
+      if (parent) {
+        parent.children?.push(item);
+      }
+    }
+  });
+
+  return roots;
+};
+
+const treeData = ref(buildTree(props.nodes || []));
 
 const checkChanged = (event: Event, key: string, nodes?: Node[]) => {
   if (event.target instanceof HTMLInputElement) {
@@ -69,8 +97,8 @@ const checkChanged = (event: Event, key: string, nodes?: Node[]) => {
 
 const nodeCheck = (check: boolean, key: string, nodes?: Node[]) => {
   nodes?.forEach((element: Node) => {
-    element.data[key] = check;
-    if (element?.children && element?.children.length > 0) {
+    element[key] = check;
+    if (element.children && element.children.length > 0) {
       nodeCheck(check, key, element.children);
     }
   });

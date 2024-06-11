@@ -1,5 +1,5 @@
 <template>
-  <template v-for="(node, index) in nodes" :key="index">
+  <template v-for="(node, index) in nodes" :key="node.id">
     <tr>
       <td
         v-if="config?.options?.showCheck"
@@ -8,7 +8,7 @@
       >
         <input
           type="checkbox"
-          v-model="node.data[config?.options?.checkMember ?? 'checkMember']"
+          v-model="node[config?.options?.checkMember ?? 'checkMember']"
           @change="
             (e) =>
               checkChanged(
@@ -38,7 +38,7 @@
                 : ''
             "
           >
-            {{ node.data["name"] }}
+            {{ node.name }}
           </span>
         </span>
       </td>
@@ -47,17 +47,14 @@
         :key="col.id"
       >
         <td class="align-middle" :class="[col.className]">
-          <a
-            v-if="col.columnStyle == ColumnStyle.link"
-            :href="node.data[col.id]"
-          >
-            {{ node.data[col.id] }}</a
+          <a v-if="col.columnStyle == ColumnStyle.link" :href="node[col.id]">
+            {{ node[col.id] }}</a
           >
           <span v-else-if="col.columnStyle == ColumnStyle.checkbox">
-            <input type="checkbox" v-model="node.data[col.id]" />
+            <input type="checkbox" v-model="node[col.id]" />
           </span>
           <span v-else>
-            {{ node.data[col.id] }}
+            {{ node[col.id] }}
           </span>
         </td>
       </template>
@@ -87,7 +84,7 @@
         ></i>
       </td>
     </tr>
-    <TreeTableItem
+    <TreeTable1DItem
       v-if="expandedNodes[nodeIndex(node, index)]"
       :nodes="node.children"
       :config="config"
@@ -103,8 +100,10 @@ import type { TableConfig } from "./interface";
 import { ColumnStyle } from "@/enums/admin.enums";
 
 interface Node {
-  data: any;
+  id: number;
+  parent: number;
   children?: Node[];
+  [key: string]: any;
 }
 
 interface Props {
@@ -117,7 +116,7 @@ interface Props {
 const props = defineProps<Props>();
 const expandedNodes = ref<{ [key: string]: boolean }>({});
 
-const detailClick = (row: any) => {
+const detailClick = (row: Node) => {
   if (props.config?.options?.detailClick) {
     props.config.options?.detailClick(row);
   }
@@ -131,7 +130,7 @@ const checkChanged = (event: Event, node: Node, key: string) => {
 };
 
 const nodeCheck = (check: boolean, key: string, node: Node) => {
-  node.data[key] = check;
+  node[key] = check;
   if (node.children && node.children.length > 0) {
     node.children.forEach((child: Node) => {
       nodeCheck(check, key, child);
@@ -139,11 +138,11 @@ const nodeCheck = (check: boolean, key: string, node: Node) => {
   }
 };
 
-const delClick = (row: any) => {
+const delClick = (row: Node) => {
   if (props.config?.options?.delClick) props.config.options?.delClick(row);
 };
 
-const editClick = (row: any) => {
+const editClick = (row: Node) => {
   if (props.config?.options?.editClick) props.config.options?.editClick(row);
 };
 
