@@ -19,7 +19,8 @@
         <tbody v-if="items?.length">
             <tr v-for="(row, index1) in items" :key="index1" :class="index1 % 2 == 1 ? 'event' : ''"
                 @click="rowSlected(row, index1)">
-                <td class="text-center align-middle" v-if="config.options?.showRowHeader">{{ index1 + (startIndex ?? 0) +
+                <td class="text-center align-middle" v-if="config.options?.showRowHeader">{{ index1 + (startIndex ?? 0)
+                    +
                     1 }}
                 </td>
                 <template v-for="(h, index) in config?.headers" :key="index">
@@ -29,7 +30,10 @@
                             {{ row[h.id] }}
                         </span>
                         <span v-if="h.columnStyle == ColumnStyle.number">
-                            {{ new Intl.NumberFormat('vi-VN').format(row[h.id]) }}
+                            {{ new Intl.NumberFormat(h.attribute?.locale?.toString() ?? 'vi-VN', {
+                                minimumFractionDigits: h.attribute?.decimalPlaces ?? 0,
+                                maximumFractionDigits: h.attribute?.decimalPlaces ?? 0
+                            }).format(row[h.id]) }}
                         </span>
                         <span v-if="h.columnStyle == ColumnStyle.checkbox">
                             <input type="checkbox" v-model="row[h.id]" />

@@ -1,64 +1,79 @@
 <template>
-  <table
-    v-if="config && config?.headers?.length"
-    class="table bg-white rounded shadow-sm table-hover"
-  >
+  <table v-if="config && config?.headers?.length" class="table bg-white rounded shadow-sm table-hover">
     <thead>
       <tr class="primary-bg text-white">
         <th class="text-center align-middle" v-if="config?.options?.showCheck">
-          <input
-            type="checkbox"
-            @change="
-              (e) =>
-                checkChanged(
-                  e,
-                  config?.options?.checkMember ?? 'checkMember',
-                  nodes
-                )
-            "
-          />
+          <input type="checkbox" @change="(e) =>
+              checkChanged(
+                e,
+                config?.options?.checkMember ?? 'checkMember',
+                treeData
+              )
+            " />
         </th>
         <th class="text-center align-middle">
           {{ config?.headers.find((x) => x.id == "name")?.name }}
         </th>
-        <template
-          v-for="h in config?.headers.filter((x) => x.id != 'name')"
-          :key="h.name"
-        >
+        <template v-for="h in config?.headers.filter((x) => x.id != 'name')" :key="h.name">
           <th class="text-center align-middle">{{ h.name }}</th>
         </template>
-        <th
-          class="text-center align-middle"
-          v-if="
-            config?.options?.showDel ||
-            config?.options?.showEdit ||
-            config?.options?.showDetail
-          "
-        >
+        <th class="text-center align-middle" v-if="
+          config?.options?.showDel ||
+          config?.options?.showEdit ||
+          config?.options?.showDetail
+        ">
           Tùy chỉnh
         </th>
       </tr>
     </thead>
     <tbody>
-      <TreeTableItem :nodes="nodes" :depth="0" :config="config" />
+      <TreeTableItem :nodes="treeData" :depth="0" :config="config" />
     </tbody>
   </table>
 </template>
 
 <script setup lang="ts">
-import { TreeTableItem } from "./";
+import { ref } from "vue";
+import { TreeTableItem } from ".";
 import type { TableConfig } from "./interface";
 
 interface Node {
-  data: any;
+  id: number;
+  parent: number;
   children?: Node[];
+  [key: string]: any;
 }
 
 interface Props {
   config?: TableConfig;
   nodes?: Node[];
 }
-defineProps<Props>();
+const props = defineProps<Props>();
+
+const buildTree = (data: Node[]): Node[] => {
+  const map = new Map<number, Node>();
+  const roots: Node[] = [];
+
+  data.forEach((item) => {
+    item.children = [];
+    map.set(item.id, item);
+  });
+
+  data.forEach((item) => {
+    if (item.parent === 0) {
+      roots.push(item);
+    } else {
+      const parent = map.get(item.parent);
+      if (parent) {
+        parent.children?.push(item);
+      }
+    }
+  });
+
+  return roots;
+};
+
+const treeData = ref(buildTree(props.nodes || []));
 
 const checkChanged = (event: Event, key: string, nodes?: Node[]) => {
   if (event.target instanceof HTMLInputElement) {
@@ -69,8 +84,8 @@ const checkChanged = (event: Event, key: string, nodes?: Node[]) => {
 
 const nodeCheck = (check: boolean, key: string, nodes?: Node[]) => {
   nodes?.forEach((element: Node) => {
-    element.data[key] = check;
-    if (element?.children && element?.children.length > 0) {
+    element[key] = check;
+    if (element.children && element.children.length > 0) {
       nodeCheck(check, key, element.children);
     }
   });

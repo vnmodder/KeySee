@@ -25,3 +25,10 @@ export enum GroupStyle {
     radio,
     custom
 }
+
+export enum NumberFormateLocale {
+    vi = 'vi-VN',
+    en = 'en-US',
+    fr = 'fr-FR',
+    jp = 'ja-JP'
+  }

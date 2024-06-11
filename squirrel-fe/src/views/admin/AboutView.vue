@@ -1,12 +1,9 @@
 <template>
   <SessionItem :title="'Test tree table'">
-    <TreeTable :nodes="treeData2" :config="config" />
+    <TreeTable :nodes="treeData3" :config="config" />
   </SessionItem>
   <SessionItem :title="'Test tree view'">
     <TreeView :node="treeData" :depth="0" />
-  </SessionItem>
-  <SessionItem :title="'Test tree table 1d'">
-    <TreeTable1D :nodes="treeData3" :config="config" />
   </SessionItem>
 </template>
 
@@ -16,73 +13,8 @@ import {
   TreeView,
   SessionItem,
   TreeTable,
-  TreeTable1D,
 } from "@/components/admin/commons";
 import { ColumnStyle } from "@/enums/admin.enums";
-
-const treeData2 = reactive([
-  {
-    data: {
-      name: "Trang chủ",
-      path: "sadsadas/sadsa/sadas",
-      description: "có 4 khoa",
-    },
-    children: [
-      {
-        data: {
-          name: "Khoa 1",
-          path: "sadsadas/sadsa/sadas",
-          description: "khoa này có 0 lớp",
-        },
-      },
-      {
-        data: {
-          name: "Khoa 2",
-          path: "sadsadas/sadsa/sadas",
-          description: "khoa này có 9 lớp",
-        },
-        children: [
-          {
-            data: {
-              name: "Môn học thứ 1",
-              path: "sadsadas/sadsa/sadas",
-              description: "lớp này có 7 người",
-            },
-          },
-          {
-            data: {
-              name: "Môn học thứ 2",
-              path: "sadsadas/sadsa/sadas",
-              description: "lớp này có 9 người",
-            },
-          },
-        ],
-      },
-      {
-        data: {
-          name: "Khoa 3",
-        },
-        children: [
-          {
-            data: {
-              name: "Môn học thứ 3",
-            },
-          },
-          {
-            data: {
-              name: "Môn học thứ 4",
-            },
-          },
-        ],
-      },
-      {
-        data: {
-          name: "Khoa 4",
-        },
-      },
-    ],
-  },
-]);
 
 const config = {
   headers: [
@@ -95,6 +27,18 @@ const config = {
       id: "path",
       name: "Đường link",
       columnStyle: ColumnStyle.link,
+    },
+    {
+      id: "so1",
+      name: "Số 1",
+      columnStyle: ColumnStyle.text,
+      textAlign: 'center'
+    },
+    {
+      id: "so2",
+      name: "Số 2",
+      columnStyle: ColumnStyle.number,
+      textAlign: 'end'
     },
     {
       id: "description",
@@ -156,52 +100,66 @@ const treeData = reactive({
 const treeData3 = reactive([
   {
     id: 1,
-    name: "ssadsa",
+    name: "Khoa 1",
     path: "sadsadas/sadsa/sadas",
     description: "có 4 khoa",
     parent: 0,
+    so1: 1,
+    so2:2111
   },
   {
     id: 2,
-    name: "dsadas",
+    name: "Khoa 2",
     path: "sadsadas/sadsa/sadas",
     description: "có 4 khoa",
     parent: 0,
+    so1: 1,
+    so2:2234
   },
   {
     id: 3,
-    name: "dsadas",
+    name: "Môn 1",
     path: "sadsadas/sadsa/sadas",
     description: "có 4 khoa",
     parent: 2,
+    so1: 1,
+    so2:221321
   },
   {
     id: 4,
-    name: "dsadas",
+    name: "Môn 2",
     path: "sadsadas/sadsa/sadas",
     description: "có 4 khoa",
     parent: 2,
+    so1: 1,
+    so2:26546
   },
   {
     id: 5,
-    name: "dsadas",
+    name: "Lớp 1",
     path: "sadsadas/sadsa/sadas",
     description: "có 4 khoa",
     parent: 3,
+    so1: 1,
+    so2:2878
   },
   {
     id: 6,
-    name: "dsadas",
+    name: "Lớp 1",
     path: "sadsadas/sadsa/sadas",
     description: "có 4 khoa",
     parent: 4,
+    so1: 1,
+    so2:22679
   },
   {
     id: 7,
-    name: "dsadas",
+    name: "Sinh viên 1",
     path: "sadsadas/sadsa/sadas",
     description: "có 4 khoa",
     parent: 5,
+    so1: 1,
+    so2:2754
   },
 ]);
 </script>

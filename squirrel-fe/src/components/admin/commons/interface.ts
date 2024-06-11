@@ -2,6 +2,7 @@ import type {
   ColumnStyle,
   ControlStyle,
   GroupStyle,
+  NumberFormateLocale
 } from "@/enums/admin.enums";
 
 export interface BaseAttribute {
@@ -44,6 +45,8 @@ interface HeaderColumn {
   displayMember?: string;
   valueMember?: string;
   showCheckAll?: boolean;
+  decimalPlaces?: number
+  locale?: NumberFormateLocale
   checkAllChanged?: (isChecked: boolean) => void;
 }
 
@@ -72,3 +75,4 @@ export interface MenuItem {
   icon?: string;
   isAtive: boolean;
 }
+

@@ -18,7 +18,7 @@ import {
   Table,
   PaginationPage,
 } from "@/components/admin/commons";
-import { ColumnStyle, ControlStyle, GroupStyle } from "@/enums/admin.enums";
+import { ColumnStyle, ControlStyle, GroupStyle, NumberFormateLocale } from "@/enums/admin.enums";
 import { getInputValue, setInputValue } from "@/helpers/input.helper";
 import { dumydata } from "./dumydata.admin";
 import { ref, reactive } from "vue";
@@ -252,6 +252,9 @@ const config = {
       name: "Cột 3",
       textAlign: "end",
       columnStyle: ColumnStyle.number,
+      attribute:{
+        decimalPlaces:2,
+      }
     },
     {
       id: "cot4",

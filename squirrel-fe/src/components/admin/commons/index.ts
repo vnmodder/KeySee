@@ -14,5 +14,3 @@ export { default as BaseInputItem } from "./BaseInputItem.vue";
 export { default as TreeView } from "./TreeView.vue";
 export { default as TreeTable } from "./TreeTable.vue";
 export { default as TreeTableItem } from "./TreeTableItem.vue";
-export { default as TreeTable1D } from "./TreeTable1D.vue";
-export { default as TreeTable1DItem } from "./TreeTable1DItem.vue";
