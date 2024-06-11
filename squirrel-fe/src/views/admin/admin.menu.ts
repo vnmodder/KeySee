@@ -27,4 +27,11 @@ export const  menuItems = [
         icon: 'fa-paperclip',
         isAtive: false
     },
+    {
+        id: 98,
+        name: 'Test Dialog',
+        href: '/admin/test',
+        icon: 'fa-paperclip',
+        isAtive: false
+    },
 ];

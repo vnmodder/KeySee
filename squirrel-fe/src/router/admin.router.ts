@@ -1,4 +1,4 @@
-import {Layout, HomeView,AboutView,CategoryView, CourseView } from '@/views/admin';
+import {Layout, HomeView,AboutView,CategoryView, CourseView,TestDialog } from '@/views/admin';
 
 export default {
     path: '/admin',
@@ -8,5 +8,6 @@ export default {
         { path: 'about', component: AboutView },
         { path: 'category', component: CategoryView },
         { path: 'course', component: CourseView },
+        { path: 'test', component: TestDialog },
     ]
 };
