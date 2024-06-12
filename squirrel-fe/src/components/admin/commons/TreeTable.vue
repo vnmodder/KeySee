@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed } from "vue";
 import { TreeTableItem } from ".";
 import type { TableConfig } from "./interface";
 
@@ -73,7 +73,7 @@ const buildTree = (data: Node[]): Node[] => {
   return roots;
 };
 
-const treeData = ref(buildTree(props.nodes || []));
+const treeData =  computed(() => buildTree(props.nodes || []))
 
 const checkChanged = (event: Event, key: string, nodes?: Node[]) => {
   if (event.target instanceof HTMLInputElement) {
